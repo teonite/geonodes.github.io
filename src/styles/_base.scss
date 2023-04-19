@@ -1,0 +1,46 @@
+html {
+  font-family: "Borna";
+  font-style: normal;
+  font-weight: 300;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  // max-width: 1440px;
+  // max-width: 1280px;
+  margin: 0 auto;
+  // padding: 2rem;
+  // text-align: center;
+  color: black;
+}
+
+// html {
+//   background-color: var(--white);
+// }
+
+button {
+  cursor: pointer;
+  outline: 0;
+}
+
+main {
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.lock-scroll {
+  overflow: hidden;
+}

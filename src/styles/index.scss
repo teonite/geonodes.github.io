@@ -1,0 +1,373 @@
+@use './fonts';
+@use './base';
+@use './buttons';
+
+@use '/src/styles/utils/bootstrap' as bs;
+
+#header {
+  padding: 2rem;
+  padding-left: 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  & > .geonodes-logo {
+    padding-left: 2rem;
+  }
+
+  & > .geonodes-logo-graphic {
+    max-width: 115px;
+  }
+}
+
+#welcome {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: "Borna";
+
+  & > .welcome-container {
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    gap: 20px;
+
+    @include bs.media-breakpoint-up(xl) {
+      flex-direction: row-reverse;
+    }
+
+    & > .welcome-content {
+      display: flex;
+      // flex: 0.5;
+      flex-direction: column;
+      gap: 30px;
+      // flex: 1;
+
+      @include bs.media-breakpoint-up(xl) {
+        // flex: 0.5;
+      }
+
+      & > h3 {
+        font-size: 55px;
+        // font-size: 128px;
+        font-weight: bold;
+        line-height: 94%;
+        margin: 0;
+
+        @include bs.media-breakpoint-up(md) {
+          font-size: 88px;
+        }
+
+        @include bs.media-breakpoint-up(xxl) {
+          font-size: 128px;
+        }
+      }
+
+      & > p {
+        font-style: italic;
+        font-size: 24px;
+        // font-size: 32px;
+      }
+    }
+
+    & > .welcome-graphic {
+      display: flex;
+      flex: 1;
+      // flex: 0.5;
+      justify-content: center;
+
+      @include bs.media-breakpoint-up(xl) {
+        display: block;
+        flex: 0.5;
+      }
+  
+      & > img {
+        // max-width: 100%;
+        @include bs.media-breakpoint-down(xl) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+#geonodes {
+  position: relative;
+  margin-bottom: 5rem;
+
+  & > img {
+    max-width: 140%;
+    margin-left: -20%;
+
+    @include bs.media-breakpoint-up(xl) {
+      max-width: 100%;
+      margin-left: 0;
+    }
+  }
+
+  & > .geonodes-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+
+    @include bs.media-breakpoint-up(xl) {
+      margin-top: 50px;
+    }
+    // left: 0;
+    // right: 0;
+    // top: 0;
+    // bottom: 0;
+    // margin: auto;
+
+    & > .geonodes-logo {
+      max-width: 182.94px;
+
+      @include bs.media-breakpoint-up(xl) {
+        max-width: unset;
+      }
+    }
+
+    & > .geonodes-title {
+      // position: absolute;
+
+      & > .geonodes-graphic {
+        max-width: 238.33px;
+
+        @include bs.media-breakpoint-up(xl) {
+          max-width: unset;
+        }
+      }
+    }
+  }
+}
+
+.collection {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+
+  @include bs.media-breakpoint-up(xl) {
+    align-items: flex-start;
+  }
+
+  & > h3 {
+    font-size: 64px;
+    margin: 0;
+  }
+
+  & > p {
+   font-size: 24px;
+   font-style: italic;
+   line-height: 28.8px;
+    @include bs.media-breakpoint-up(xl) {
+      max-width: 500px;
+    }
+  }
+}
+
+.collection-image {
+  @include bs.media-breakpoint-down(xl) {
+    height: 300px;
+  }
+
+  & > img {
+    object-fit: cover;
+    height: 100%;
+  }
+}
+
+.gallery-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  font-family: 'Borna';
+  // text-transform: uppercase;
+
+  & > a {
+    color: white;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 11.5%;
+    text-decoration: none;
+  }
+
+  & > a:hover {
+    color: white;
+  }
+}
+
+.gallery-indicators {
+  justify-content: center;
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+
+  & > div {
+    cursor: pointer;
+  }
+
+  @include bs.media-breakpoint-up(xl) {
+    width: 100%;
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+
+  @include bs.media-breakpoint-up(xl) {
+    flex-direction: row;
+    align-items: flex-start;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  & > .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    & > .geonodes-graphic {
+      max-width: 200px;
+
+      @include bs.media-breakpoint-up(xl) {
+        display: none;
+      }
+    }
+
+    & > .geonodes-graphic-desktop {
+      max-width: 115px;
+
+      @include bs.media-breakpoint-down(xl) {
+        display: none;
+      }
+    }
+
+    & > .footer-logo-geonodes {
+      max-width: 100px;
+
+      @include bs.media-breakpoint-up(xl) {
+        // max-width: auto;
+      }
+    }
+  }
+
+  & > .footer-teonite {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    margin-top: 1rem;
+
+    // & > .tnt-logo-path {
+    //   fill: pink;
+    // }
+
+    @include bs.media-breakpoint-down(xl) {
+      display: none;
+    }
+
+    @include bs.media-breakpoint-up(xl) {
+      width: auto;
+      background-color: #fff;
+    }
+  }
+
+  & > .footer-teonite-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 1rem;
+
+    & > a {
+      display: flex;
+    }
+
+    @include bs.media-breakpoint-up(xl) {
+      display: none;
+    }
+  }
+}
+
+.early-access-modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.early-access-modal-content {
+  border: 10px solid black;
+  border-radius: 0;
+  background-color: #fff;
+
+  @include bs.media-breakpoint-up(xl) {
+    min-width: 400px;
+    min-height: 400px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.early-access-form {
+  margin: 2rem;
+
+  & > form {
+    font-family: 'Borna';
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > label {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      flex-direction: column;
+      margin-bottom: 12px;
+      font-size: 36px;
+      // flex-direction: row;
+
+      & > .form-input-wrapper {
+        display: flex;
+        width: 100%;
+
+        & > input {
+          width: 100%;
+          border: 5px solid black;
+          padding: 10px;
+          font-size: 24px;
+        }
+      }
+    }
+
+    & > button {
+      margin-top: 20px;
+    }
+  }
+}
