@@ -3,6 +3,8 @@ import nftGraphic from './assets/images/NFT.png';
 import logoLarge from './assets/images/logo-large.svg';
 import logo from './assets/images/logo.svg';
 import geonodeGraphic from './assets/images/geonodes.svg';
+import tntLogoWhite from './assets/images/tnt-logo-white.svg';
+import tntLogoBlack from './assets/images/tnt-logo-black.svg';
 import './App.css'
 import './styles/index.scss';
 
@@ -20,6 +22,8 @@ import pfp2 from './assets/images/gallery-pfp/AK986665260.jpg';
 import pfp3 from './assets/images/gallery-pfp/AP658101057.jpg';
 import pfp4 from './assets/images/gallery-pfp/BG499717119.jpg';
 import pfp5 from './assets/images/gallery-pfp/FS898028791.jpg';
+import LinkIcon from './components/icons/LinkIcon';
+import ExternalLink from './components/ExternalLink';
 // HS756967821
 // JC244552313
 // KC123335648
@@ -40,6 +44,8 @@ const pfpImages = [
 
 function App() {
   const [selectedImage, selectImage] = useState(0);
+  const [tntLogo, setTntLogo] = useState(tntLogoWhite);
+
 
   const onClick = () => {
     const modal = document.querySelector('.early-access-modal');
@@ -134,7 +140,6 @@ function App() {
             variants={{
               hover: {
                 opacity: 1,
-                // backgroundColor: 'red'
               },
             }}
             // initial={{ opacity: 0, scale: 0.5 }}
@@ -179,7 +184,11 @@ function App() {
           })}
       </Carousel>
       <div className='gallery-link'>
-        <a href="https://opensea.io/collection/teonite-geonodes" target="_blank">view full collection on opensea.io</a>
+        <ExternalLink
+          Icon={LinkIcon}
+          url="https://opensea.io/collection/teonite-geonodes"
+          text="view full collection on opensea.io"
+        />
       </div>
       <div className='gallery-indicators'>
         {pfpImages.map((_, index) => {
@@ -198,14 +207,29 @@ function App() {
       </section> */}
 
       <footer>
-        <motion.div className='footer-logo' whileHover='hover'>
+        <motion.div
+          className='footer-logo'
+          whileHover='hover'
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
           <img src={logo} className="footer-logo-geonodes" alt="geonodes.xyz logo"/>
           <img src={geonodeGraphic} className="geonodes-graphic" />
         </motion.div>
         <div className='footer-teonite'>
-          <a href="https://teonite.com" target="_blank">
-            <TntLogo />
-          </a>
+          <motion.a href="https://teonite.com" target="_blank">
+            {/* <TntLogo /> */}
+            <motion.img
+              src={tntLogo}
+              onMouseEnter={() => setTntLogo(tntLogoBlack)}
+              onMouseLeave={() => setTntLogo(tntLogoWhite)}
+              alt="Teonite logo"
+            />
+          </motion.a>
         </div>
         <div className='footer-teonite-mobile'>
           <a href="https://teonite.com" target="_blank">

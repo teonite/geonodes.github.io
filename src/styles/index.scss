@@ -199,10 +199,20 @@
     text-transform: uppercase;
     letter-spacing: 11.5%;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    & > span {
+      margin-right: 5px;
+    }
   }
 
   & > a:hover {
     color: white;
+
+    & > .link-icon-path {
+      color: red;
+    }
   }
 }
 
@@ -242,6 +252,7 @@ footer {
     align-items: center;
     margin-bottom: 3rem;
     margin-top: 3rem;
+    cursor: pointer;
 
     @include bs.media-breakpoint-up(xl) {
       margin-bottom: 1rem;
