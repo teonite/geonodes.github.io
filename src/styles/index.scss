@@ -48,7 +48,6 @@
 
       & > h3 {
         font-size: 55px;
-        // font-size: 128px;
         font-weight: bold;
         line-height: 94%;
         margin: 0;
@@ -65,14 +64,13 @@
       & > p {
         font-style: italic;
         font-size: 24px;
-        // font-size: 32px;
+        margin: 0;
       }
     }
 
     & > .welcome-graphic {
       display: flex;
       flex: 1;
-      // flex: 0.5;
       justify-content: center;
 
       @include bs.media-breakpoint-up(xl) {
@@ -242,7 +240,13 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+
+    @include bs.media-breakpoint-up(xl) {
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
 
     & > .geonodes-graphic {
       max-width: 200px;
@@ -275,10 +279,6 @@ footer {
     justify-content: center;
     background-color: black;
     margin-top: 1rem;
-
-    // & > .tnt-logo-path {
-    //   fill: pink;
-    // }
 
     @include bs.media-breakpoint-down(xl) {
       display: none;
@@ -370,4 +370,8 @@ footer {
       margin-top: 20px;
     }
   }
+}
+
+.bold {
+  font-weight: bold;
 }

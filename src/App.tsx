@@ -99,10 +99,10 @@ function App() {
               dimensional
             </h3>
             <p>
-              geonodes.xyz is a curated platform for fully generative animated 3D nfts made in blender using geometry nodes. Each geonode is unique, based on a generated seed and attributes defined by artist. rendered on the  platform and minted for you.
+              geonodes.xyz is a curated platform for fully generative animated 3D nfts made in blender using geometry nodes. Each geonode is unique, based on a generated seed and attributes defined by artist. rendered on the  platform and minted for <span className='bold'>you.</span>
             </p>
             <p>
-              Currently geonodes.xyz is in alpha state. if you’re interested please sign up for early access.
+              Currently <span className='bold'>geonodes.xyz</span> is in alpha state. if you’re interested please sign up for early access.
             </p>
             <div className='action-button-container'>
               <button className="action-button" onClick={onClick}>
@@ -110,9 +110,6 @@ function App() {
               </button>
             </div>
           </div>
-          {/* <div className="welcome-graphic">
-            <img src={welcomeGraphic} />
-          </div> */}
         </div>
 
       </section>
