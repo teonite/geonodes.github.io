@@ -3,6 +3,7 @@
 .action-button-container {
   display: flex;
   justify-content: center;
+
   @include bs.media-breakpoint-up(xl) {
     justify-content: unset;
   }
@@ -14,6 +15,8 @@
   font-size: 40px;
   padding: 5px 30px;
   text-transform: lowercase;
+  background-color: #fff;
+  color: black;
 
   &:hover {
     border-color: #00EECC;
