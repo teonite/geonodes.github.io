@@ -60,12 +60,23 @@ function App() {
     const item = document.getElementById("welcome");
     const item2 = document.getElementById("geonodes");
     const item3 = document.getElementById("collection-pfp");
+    const item4 = document.getElementById("collection-thxnodes");
   
     const progressWelcome = document.getElementById("progress-welcome");
     const progressGeonodes = document.getElementById("progress-geonodes");
     const progressCollectionPfp = document.getElementById("progress-collection-pfp");
+    const progressCollectionThxnodes = document.getElementById("progress-collection-thxnodes");
 
-    if (!item || !item2 || !item3 || !progressWelcome || !progressGeonodes || !progressCollectionPfp) return;
+    if (
+      !item ||
+      !item2 ||
+      !item3 ||
+      !item4 ||
+      !progressWelcome ||
+      !progressGeonodes ||
+      !progressCollectionPfp ||
+      !progressCollectionThxnodes
+    ) return;
 
     scroll(({ y }) => {
       // if (y.current < y.targetOffset || y.current + 1 > y.targetLength + y.targetOffset) {
@@ -90,7 +101,7 @@ function App() {
       target: item2
     });
 
-      scroll(({ y }) => {
+    scroll(({ y }) => {
       if (y.current + 1 <= y.targetOffset || y.current > y.containerLength + y.targetOffset) {
         progressCollectionPfp.style.height = "0px"
       } else {
@@ -99,6 +110,17 @@ function App() {
     }, {
       target: item3,
     });
+
+    scroll(({ y }) => {
+      if (y.current <= y.targetOffset || y.current > y.containerLength + y.targetOffset) {
+        progressCollectionThxnodes.style.height = "0px"
+      } else {
+        progressCollectionThxnodes.style.height = "56px"
+      }
+    }, {
+      target: item4,
+    });
+  
   }, []);
 
 
@@ -220,6 +242,31 @@ function App() {
           {/* <div className='navigation-slider-item-title'>
             <span>teonite pfp</span>
           </div> */}
+        </div>
+
+        <div
+          id='slider-collection-thxnodes'
+          className='navigation-slider-item'
+          // onMouseEnter={handleMouseEnter}
+          // onMouseLeave={handleMouseLeave}
+          // onClick={() => {
+          //   document.querySelector('#collection-pfp')?.scrollIntoView({ behavior: 'smooth' });
+          // }}
+        >
+          <div
+            className='item-container'
+            // onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+            onClick={() => {
+              window.scrollTo({
+                top: document.getElementById('collection-thxnodes')?.offsetTop,
+                behavior: 'smooth',
+              });
+            }}
+          >
+            <div className='navigation-slider-item-inner'/>
+            <div id='progress-collection-thxnodes' className='navigation-slider-item-progress' />
+          </div>
         </div>
 
         {/* <div className='navigation-slider-item selected' />
@@ -386,7 +433,7 @@ function App() {
       </div>
       </section>
 
-      <section id='collection-x' className="collection collection-odd">
+      <section id='collection-thxnodes' className="collection collection-odd">
         <h3>teonite thxnodes</h3>
         <p>
           teonite made also a collection for its select clients, as sign of great collaboration and highest value.
