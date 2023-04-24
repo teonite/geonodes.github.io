@@ -10,9 +10,13 @@
   display: flex;
   position: relative;
   align-items: center;
+  height: 100px;
 
   & > .geonodes-logo {
     padding-left: 2rem;
+    @include bs.media-breakpoint-up(xl) {
+      padding-left: 5rem;
+    }
   }
 
   & > .geonodes-logo-graphic {
@@ -24,6 +28,12 @@
   padding-left: 2rem;
   padding-right: 2rem;
   font-family: "Borna";
+  padding-bottom: 5rem;
+  
+  @include bs.media-breakpoint-up(xl) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
 
   & > .welcome-container {
     display: flex;
@@ -90,10 +100,12 @@
 
 #geonodes {
   position: relative;
-  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  width: 100vw;
 
   & > img {
     max-width: 140%;
+    min-width: 100%;
     margin-left: -20%;
 
     @include bs.media-breakpoint-up(xl) {
@@ -116,11 +128,6 @@
     @include bs.media-breakpoint-up(xl) {
       margin-top: 50px;
     }
-    // left: 0;
-    // right: 0;
-    // top: 0;
-    // bottom: 0;
-    // margin: auto;
 
     & > .geonodes-logo {
       max-width: 182.94px;
@@ -150,17 +157,19 @@
   align-items: center;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 
   @include bs.media-breakpoint-up(xl) {
     align-items: flex-start;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   & > h3 {
     font-size: 64px;
     margin: 0;
+    line-height: 76.8px;
   }
 
   & > p {
@@ -171,6 +180,11 @@
       max-width: 500px;
     }
   }
+}
+
+.collection-odd {
+  background-color: #fff;
+  color: #000;
 }
 
 .collection-image {
@@ -234,12 +248,13 @@ footer {
   align-items: center;
   flex-direction: column;
   flex: 1;
+  margin-top: 2rem;
 
   @include bs.media-breakpoint-up(xl) {
     flex-direction: row;
     align-items: flex-start;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     padding-bottom: 1rem;
   }
 
@@ -325,7 +340,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  // TODO: add blur
 }
 
 .early-access-modal-content {
@@ -334,7 +352,7 @@ footer {
   background-color: #fff;
 
   @include bs.media-breakpoint-up(xl) {
-    min-width: 400px;
+    width: 400px;
     min-height: 400px;
   }
 }
@@ -385,3 +403,142 @@ footer {
 .bold {
   font-weight: bold;
 }
+
+.App {
+  // height: 100vh;
+  // scroll-behavior: smooth;
+  // overflow: auto;
+  // scroll-snap-type: y mandatory;
+  // overflow-y: scroll;
+}
+
+section {
+  // scroll-snap-align: start;
+}
+
+.navigation-slider {
+  position: fixed;
+  top: 30vh;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 6px;
+  align-items: flex-end;
+  z-index: 1000;
+
+  @include bs.media-breakpoint-down(xl) {
+    display: none;
+  }
+}
+
+.item-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 6px;
+  height: 56px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+
+  &:hover {
+    & + .navigation-slider-item-title {
+      opacity: 1;
+    }
+    & > .navigation-slider-item-inner {
+      width: 6px;
+      transition: .3s;
+    }
+
+    & > .navigation-slider-item-progress {
+      width: 6px;
+    }
+  }
+}
+
+.navigation-slider-item {
+  position: relative;
+  width: 6px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  // cursor: pointer;
+  padding-right: 5px;
+
+  &:hover {
+    & > .navigation-slider-item-inner {
+      width: 6px;
+      transition: .3s;
+    }
+
+    & > .navigation-slider-item-progress {
+      width: 6px;
+    }
+
+    // & > .navigation-slider-item-title {
+    //   opacity: 1;
+    //   z-index: 1000;
+    // }
+
+    // .slider-overlay {
+    //   opacity: 1;
+    //   z-index: 22000;
+    // }
+  }
+}
+
+.navigation-slider-item-inner {
+  // position: absolute;
+  width: 2px;
+  height: 56px;
+  background-color: black;
+  transition: width .3s;
+}
+
+.selected {
+  background-color: #00EECC;
+  width: 6px;
+}
+
+.navigation-slider-item-progress {
+  position: absolute;
+  background-color: #00EECC;
+  // height: 30px;
+  height: 0;
+  width: 2px;
+  transition: width .3s;
+}
+
+.navigation-slider-item-title {
+  position: absolute;
+  height: 100%;
+  z-index: -1000;
+  opacity: 0;
+  font-weight: bold;
+  right: 30px;
+  transition: all .3s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.slider-overlay {
+  opacity: 0;
+  z-index: -3000;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: opacity .2s;
+
+  &-visible {
+    opacity: 1;
+    z-index: 800;
+    transition: opacity .2s;
+  }
+}
+

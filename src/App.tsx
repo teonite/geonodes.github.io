@@ -1,5 +1,5 @@
 import welcomeGraphic from './assets/images/welcome-graphic.png';
-import nftGraphic from './assets/images/NFT.png';
+import nftGraphic from './assets/images/NFT.svg';
 import logoLarge from './assets/images/logo-large.svg';
 import logo from './assets/images/logo.svg';
 import geonodeGraphic from './assets/images/geonodes.svg';
@@ -12,10 +12,12 @@ import { motion } from "framer-motion";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GalleryIndicator from './components/icons/GalleryIndicator';
 import TntLogo from './components/icons/TntLogo';
 import EarlyAccessForm from './components/EarlyAccessForm';
+
+import { animate, scroll, inView, ScrollOffset } from "motion";
 
 import pfp1 from './assets/images/gallery-pfp/AC375921867.jpg';
 import pfp2 from './assets/images/gallery-pfp/AK986665260.jpg';
@@ -24,10 +26,13 @@ import pfp4 from './assets/images/gallery-pfp/BG499717119.jpg';
 import pfp5 from './assets/images/gallery-pfp/FS898028791.jpg';
 import LinkIcon from './components/icons/LinkIcon';
 import ExternalLink from './components/ExternalLink';
-// HS756967821
-// JC244552313
-// KC123335648
-// KK068123852
+
+import pfp6 from './assets/images/gallery-pfp/HS756967821.jpg';
+import pfp7 from './assets/images/gallery-pfp/JC244552313.jpg';
+import pfp8 from './assets/images/gallery-pfp/KC123335648.jpg';
+import pfp9 from './assets/images/gallery-pfp/KK068123852.jpg';
+import pfp10 from './assets/images/gallery-pfp/MC631701771.jpg';
+
 // MC631701771
 // MG019297983
 // MS704044284
@@ -42,9 +47,59 @@ const pfpImages = [
   pfp1, pfp2, pfp3, pfp4, pfp5,
 ];
 
+const thxnodeImages = [
+  pfp6, pfp7, pfp8, pfp9, pfp10,
+];
+
 function App() {
   const [selectedImage, selectImage] = useState(0);
+  const [selectedGeonode, selectGeonode] = useState(0);
   const [tntLogo, setTntLogo] = useState(tntLogoWhite);
+
+  useEffect(() => {
+    const item = document.getElementById("welcome");
+    const item2 = document.getElementById("geonodes");
+    const item3 = document.getElementById("collection-pfp");
+  
+    const progressWelcome = document.getElementById("progress-welcome");
+    const progressGeonodes = document.getElementById("progress-geonodes");
+    const progressCollectionPfp = document.getElementById("progress-collection-pfp");
+
+    if (!item || !item2 || !item3 || !progressWelcome || !progressGeonodes || !progressCollectionPfp) return;
+
+    scroll(({ y }) => {
+      // if (y.current < y.targetOffset || y.current + 1 > y.targetLength + y.targetOffset) {
+      if (y.current + 164 < y.targetOffset || y.current +1 > y.targetLength + y.targetOffset) {
+        progressWelcome.style.height = "0px"
+      } else {
+        progressWelcome.style.height = "56px"
+      }
+
+    }, {
+      target: item
+    });
+
+    scroll(({ y }) => {
+      if (y.current < y.targetOffset || y.current +1 >= y.targetLength + y.targetOffset) {
+      // if (y.current + 1 < y.targetOffset || y.current +1 > y.containerLength + y.targetOffset) {
+        progressGeonodes.style.height = "0px"
+      } else {
+        progressGeonodes.style.height = "56px"
+      }
+    }, {
+      target: item2
+    });
+
+      scroll(({ y }) => {
+      if (y.current + 1 <= y.targetOffset || y.current > y.containerLength + y.targetOffset) {
+        progressCollectionPfp.style.height = "0px"
+      } else {
+        progressCollectionPfp.style.height = "56px"
+      }
+    }, {
+      target: item3,
+    });
+  }, []);
 
 
   const onClick = () => {
@@ -66,9 +121,138 @@ function App() {
     }
   };
 
+  const handleMouseEnter = () => {
+    const overlay = document.querySelector('.slider-overlay');
+    if (!overlay) return;
+
+    overlay.classList.add('slider-overlay-visible');
+  };
+
+  const handleMouseLeave = () => {
+    const overlay = document.querySelector('.slider-overlay');
+    if (!overlay) return;
+
+    overlay.classList.remove('slider-overlay-visible');
+  };
+
   return (
     <div className="App">
+      <div className='slider-overlay' />
+      <div className='navigation-slider'>
+        <div
+          id='slider-welcome'
+          className='navigation-slider-item'  
+        >
+          <div
+            className='item-container'
+            // onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              });
+            }}
+          >
+            <div className='navigation-slider-item-inner'/>
+            <div id='progress-welcome' className='navigation-slider-item-progress' />
+          </div>
+          {/* <div className='navigation-slider-item-title'>
+            <span>about</span>
+          </div> */}
+        </div>
+        <div
+          id='slider-geonodes'
+          className='navigation-slider-item'
+          // onMouseEnter={handleMouseEnter}
+          // onMouseLeave={handleMouseLeave}
+          // onClick={() => {
+          //   document.querySelector('#geonodes')?.scrollIntoView({ behavior: 'smooth' });
+          // }}
+        >
+          <div
+            className='item-container'
+            // onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+            onClick={() => {
+              window.scrollTo({
+                top: document.getElementById('geonodes')?.offsetTop,
+                behavior: 'smooth',
+              });
+              // document.querySelector('#geonodes')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <div className='navigation-slider-item-inner'/>
+            <div id='progress-geonodes' className='navigation-slider-item-progress' />
+          </div>
+          {/* <div className='navigation-slider-item-inner' />
+          <div className='navigation-slider-item-progress' /> */}
+          {/* <div className='navigation-slider-item-title'>
+            <span>geonodes</span>
+          </div> */}
+        </div>
+        <div
+          id='slider-collection-pfp'
+          className='navigation-slider-item'
+          // onMouseEnter={handleMouseEnter}
+          // onMouseLeave={handleMouseLeave}
+          // onClick={() => {
+          //   document.querySelector('#collection-pfp')?.scrollIntoView({ behavior: 'smooth' });
+          // }}
+        >
+          <div
+            className='item-container'
+            // onMouseEnter={handleMouseEnter}
+            // onMouseLeave={handleMouseLeave}
+            onClick={() => {
+              // document.querySelector('#collection-pfp')?.scrollIntoView({ behavior: 'smooth' });
+              window.scrollTo({
+                top: document.getElementById('collection-pfp')?.offsetTop,
+                behavior: 'smooth',
+              });
+            }}
+          >
+            <div className='navigation-slider-item-inner'/>
+            <div id='progress-collection-pfp' className='navigation-slider-item-progress' />
+          </div>
+          {/* <div className='navigation-slider-item-inner' />
+          <div className='navigation-slider-item-progress' /> */}
+          {/* <div className='navigation-slider-item-title'>
+            <span>teonite pfp</span>
+          </div> */}
+        </div>
+
+        {/* <div className='navigation-slider-item selected' />
+        <div className='navigation-slider-item' /> */}
+      </div>
+
       <motion.div
+        id="header"
+        whileHover='hover'
+      >
+        <img src={logo} alt="geonodes.xyz logo" className='geonodes-logo' style={{ backgroundColor: 'white', zIndex: 100 }} />
+        <motion.img
+          style={{
+            marginLeft: -120,
+            left: 0,
+            position: 'absolute',
+          }}
+          variants={{
+            hover: {
+              left: 300,
+              transition: {
+                type: 'spring',
+                duration: 0.8,
+              },
+            },
+          }}
+          src={geonodeGraphic}
+          className="geonodes-logo-graphic"
+        />
+      </motion.div>
+
+      <section id="welcome">
+      {/* <motion.div
         id="header"
         whileHover='hover'
       >
@@ -91,8 +275,7 @@ function App() {
           src={geonodeGraphic}
           className="geonodes-logo-graphic"
         />
-      </motion.div>
-      <section id="welcome">
+      </motion.div> */}
         <div className="welcome-container">
           <div className="welcome-graphic">
             <img src={welcomeGraphic} />
@@ -159,12 +342,13 @@ function App() {
           </motion.div> */}
       </section>
 
-      <section className="collection">
+      <section id='collection-pfp' className="collection">
         <h3>teonite pfp</h3>
         <p>
           teonite is a deep tech studio and used geonodes.xyz platform to render and mint a custom PFP NFT for each employee.
         </p>
         <Carousel
+          infiniteLoop
           autoPlay
           showArrows={false}
           showStatus={false}
@@ -202,9 +386,49 @@ function App() {
       </div>
       </section>
 
-      {/* <section className="collection odd">
-          
-      </section> */}
+      <section id='collection-x' className="collection collection-odd">
+        <h3>teonite thxnodes</h3>
+        <p>
+          teonite made also a collection for its select clients, as sign of great collaboration and highest value.
+        </p>
+        <Carousel
+          infiniteLoop
+          autoPlay
+          showArrows={false}
+          showStatus={false}
+          showThumbs={false}
+          showIndicators={false}
+          selectedItem={selectedGeonode}
+          onChange={(index) => {
+            selectGeonode(index);
+          }}
+        >
+          {thxnodeImages.map((item, index) => {
+            return (
+              <div key={index} className="collection-image">
+                <img src={item} />
+              </div>
+            );
+          })}
+        </Carousel>
+        <div className='gallery-link'>
+          <ExternalLink
+            Icon={LinkIcon}
+            url="https://opensea.io/collection/teonite-geonodes"
+            text="view full collection on opensea.io"
+          />
+        </div>
+        <div className='gallery-indicators'>
+          {thxnodeImages.map((_, index) => {
+            const isSelected = index === selectedGeonode;
+            return (
+              <div key={index} onClick={() => selectGeonode(index)}>
+                <GalleryIndicator color={isSelected ? '#00EECC' : '#000'} />
+              </div>
+            );
+          })}
+        </div>  
+      </section>
 
       <footer>
         <motion.div
@@ -222,7 +446,6 @@ function App() {
         </motion.div>
         <div className='footer-teonite'>
           <motion.a href="https://teonite.com" target="_blank">
-            {/* <TntLogo /> */}
             <motion.img
               src={tntLogo}
               onMouseEnter={() => setTntLogo(tntLogoBlack)}

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
-
+import isEmail from 'validator/lib/isEmail';
 
 type FormValues = {
   name: string;
@@ -35,10 +35,10 @@ const EarlyAccessForm = () => {
     formData.append('email', data.email);
 
     return axios.post(
-      'http://localhost:8000/submissions/geonodes/',
+      'https://cfm.teonite.net/submissions/geonodes/',
       data,
     ).catch((e: Error | AxiosError) => {
-      const generalErrorMessage = "ERROR: Something happened on our end. Please try again later.";
+      const generalErrorMessage = "Something happened on our end. Please try again later.";
 
       if (axios.isAxiosError(e)) {
         setError('email', { message: generalErrorMessage, type: 'custom' });
@@ -46,11 +46,6 @@ const EarlyAccessForm = () => {
         setError('email', { message: generalErrorMessage, type: 'custom' });
       }
     });
-
-  
-    // const modal = document.querySelector('.early-access-modal');
-    // if (!modal) return;
-    // modal.classList.add('hidden');
   };
 
   return (
@@ -73,7 +68,6 @@ const EarlyAccessForm = () => {
                 )
               }
             />
-            {/* <InputError message={errors?.name?.message as string ?? ''} /> */}
           </div>
         </label>
         <label>
@@ -89,14 +83,24 @@ const EarlyAccessForm = () => {
                       value: true,
                       message: 'ERROR: Please enter email.',
                     },
-                    // validate: (v) => isEmail(v) || 'ERROR: Please enter correct email.',
+                    validate: (v) => isEmail(v) || 'ERROR: Please enter correct email.',
                   }
                 )
               }
             />
-            {/* <InputError message={errors?.email?.message as string ?? ''} /> */}
           </div>
         </label>
+        <div>
+          {isSubmitSuccessful ? (
+            <div style={{ color: '#00EECC', height: 30 }}>We will get in touch soon!</div>
+          ) : errors?.email || errors?.name ? (
+            <div style={{ height: 30, textAlign: 'center', color: '#f02e2e' }}>
+              {errors.name?.message ?? errors?.email?.message}
+            </div>
+          ) : (
+            <div style={{ height: 30 }} />
+          )}
+        </div>
         <button className="action-button">
           sign in
         </button>
