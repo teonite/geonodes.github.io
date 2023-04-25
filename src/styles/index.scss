@@ -171,6 +171,7 @@
   padding-right: 2rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  font-family: 'Borna';
 
   @include bs.media-breakpoint-up(xl) {
     align-items: flex-start;
@@ -185,9 +186,11 @@
   }
 
   & > p {
-   font-size: 24px;
-   font-style: italic;
-   line-height: 28.8px;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 28.8px;
+
     @include bs.media-breakpoint-up(xl) {
       max-width: 500px;
     }
