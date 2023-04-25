@@ -198,7 +198,7 @@ function App() {
             // onMouseLeave={handleMouseLeave}
             onClick={() => {
               window.scrollTo({
-                top: document.getElementById('geonodes')?.offsetTop,
+                top: document.getElementById('geonodes')!.offsetTop + 100,
                 behavior: 'smooth',
               });
               // document.querySelector('#geonodes')?.scrollIntoView({ behavior: 'smooth' });
@@ -352,24 +352,27 @@ function App() {
 
       <section id="geonodes">
         <img src={nftGraphic} />
-        <motion.div className="geonodes-content">
-          <img src={logoLarge} className="geonodes-logo" />
+        <motion.div className="geonodes-content" whileInView="hover">
+          <div className='geonodes-logo-container'>
+            <img src={logoLarge} className="geonodes-logo" />
+          </div>
           <motion.div
             className='geonodes-title'
             whileInView="hover"
-            viewport={{ once: true }}
-            // whileInView='hover'
+            // viewport={{ once: true }}
             style={{
-              opacity: 0,
+              bottom: -200
+              // opacity: 0,
               // position: 'absolute',
             }}
             transition={{
-              duration: 1,
-              delay: 0.7,
+              duration: 0.6,
+              // delay: 0.7,
             }}
             variants={{
               hover: {
-                opacity: 1,
+                bottom: -270,
+                // opacity: 1,
               },
             }}
             // initial={{ opacity: 0, scale: 0.5 }}

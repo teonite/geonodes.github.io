@@ -117,7 +117,9 @@
   & > .geonodes-content {
     position: absolute;
     left: 50%;
-    top: 50%;
+    // top: 50%;
+    // transform: translate(-50%,-50%);
+    top: 40%;
     transform: translate(-50%,-50%);
     display: flex;
     flex-direction: column;
@@ -126,10 +128,14 @@
     margin-top: 50px;
 
     @include bs.media-breakpoint-up(xl) {
-      margin-top: 50px;
+      margin-top: 20px;
     }
 
-    & > .geonodes-logo {
+    & > .geonodes-logo-container {
+      // position: absolute;
+    }
+
+    & > div > .geonodes-logo {
       max-width: 182.94px;
 
       @include bs.media-breakpoint-up(xl) {
@@ -138,6 +144,12 @@
     }
 
     & > .geonodes-title {
+
+      @include bs.media-breakpoint-up(xl) {
+        position: absolute;
+        bottom: -260px;
+      }
+
       & > .geonodes-graphic {
         max-width: 238.33px;
 
