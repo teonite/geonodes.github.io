@@ -4,9 +4,10 @@ interface Props {
   Icon: React.ElementType;
   url: string;
   text?: string;
+  odd?: boolean;
 };
 
-const ExternalLink = ({ Icon, url, text }: Props) => {
+const ExternalLink = ({ Icon, url, text, odd = false }: Props) => {
   const [isHovered, setHovered] = useState(false);
 
   return (
@@ -26,8 +27,8 @@ const ExternalLink = ({ Icon, url, text }: Props) => {
         }
       }}
     >
-      {text ? <span>{text}</span> : null}
-      <Icon color={isHovered ? '#00EECC' : undefined} />
+      {text ? <span style={{ color: odd ? 'black' : 'white' }}>{text}</span> : null}
+      <Icon color={isHovered ? '#00EECC' : odd ? 'black' : undefined} />
     </a>
   );
 };

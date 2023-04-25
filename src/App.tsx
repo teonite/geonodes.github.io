@@ -463,6 +463,7 @@ function App() {
         </Carousel>
         <div className='gallery-link'>
           <ExternalLink
+            odd
             Icon={LinkIcon}
             url="https://opensea.io/collection/teonite-geonodes"
             text="view full collection on opensea.io"
