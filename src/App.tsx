@@ -112,7 +112,7 @@ function App() {
     });
 
     scroll(({ y }) => {
-      if (y.current <= y.targetOffset || y.current > y.containerLength + y.targetOffset) {
+      if (y.current + 1 <= y.targetOffset || y.current > y.containerLength + y.targetOffset) {
         progressCollectionThxnodes.style.height = "0px"
       } else {
         progressCollectionThxnodes.style.height = "56px"
