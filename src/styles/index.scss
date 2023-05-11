@@ -207,6 +207,8 @@
     height: 300px;
   }
 
+  // height: 500px;
+
   & > img {
     object-fit: cover;
     height: 100%;
@@ -514,13 +516,13 @@ section {
 }
 
 .selected {
-  background-color: #00EECC;
+  // background-color: #00EECC;
   width: 6px;
 }
 
 .navigation-slider-item-progress {
   position: absolute;
-  background-color: #00EECC;
+  // background-color: #00EECC;
   // height: 30px;
   height: 0;
   width: 2px;
@@ -557,3 +559,20 @@ section {
   }
 }
 
+.video-player {
+  & > video {
+    object-fit: cover;
+    @include bs.media-breakpoint-down(xl) {
+      object-position: 65%;
+    }
+  }
+
+  & > video[poster] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include bs.media-breakpoint-down(xl) {
+      object-position: 65%;
+    }
+  }
+}

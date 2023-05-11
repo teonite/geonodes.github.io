@@ -32,6 +32,13 @@ import pfp7 from './assets/images/gallery-pfp/JC244552313.jpg';
 import pfp8 from './assets/images/gallery-pfp/KC123335648.jpg';
 import pfp9 from './assets/images/gallery-pfp/KK068123852.jpg';
 import pfp10 from './assets/images/gallery-pfp/MC631701771.jpg';
+import ReactPlayer from 'react-player';
+
+import poster_JC244552313 from './assets/images/video_posters/JC244552313.jpg';
+import poster_KC123335648 from './assets/images/video_posters/KC123335648.jpg';
+import poster_KK068123852 from './assets/images/video_posters/KK068123852.jpg';
+import poster_MG019297983 from './assets/images/video_posters/MG019297983.jpg';
+import poster_RO134319190 from './assets/images/video_posters/RO134319190.jpg';
 
 // MC631701771
 // MG019297983
@@ -49,6 +56,32 @@ const pfpImages = [
 
 const thxnodeImages = [
   pfp6, pfp7, pfp8, pfp9, pfp10,
+];
+
+const pfpVideoUrls = [
+  {
+    video: 'videos/JC244552313/master.m3u8',
+    poster: poster_JC244552313,
+  },
+  {
+    video: 'videos/KC123335648/master.m3u8',
+    poster: poster_KC123335648,
+  }
+];
+
+const thxGeonodesVideoUrls = [
+  {
+    video: 'videos/KK068123852/master.m3u8',
+    poster: poster_KK068123852,
+  },
+  {
+    video: 'videos/MG019297983/master.m3u8',
+    poster: poster_MG019297983,
+  },
+  {
+    video: 'videos/RO134319190/master.m3u8',
+    poster: poster_RO134319190,
+  },
 ];
 
 function App() {
@@ -409,10 +442,28 @@ function App() {
             selectImage(index);
           }}
         >
-          {pfpImages.map((item, index) => {
+          {pfpVideoUrls.map(({ video, poster }, index) => {
             return (
               <div key={index} className="collection-image">
-                <img src={item} />
+                <ReactPlayer
+                  className='video-player'
+                  url={video}
+                  // config={{
+                  //   file: {
+                  //     attributes: {
+                  //       poster,
+                  //       preload: 'none',
+                  //     },
+                  //   },
+                  // }}
+                  height='100%'
+                  width='100%'
+                  controls={false}
+                  playing={index === selectedImage}
+                  muted={true}
+                  loop
+                  playsinline
+                />
               </div>
             );
           })}
@@ -425,7 +476,7 @@ function App() {
         />
       </div>
       <div className='gallery-indicators'>
-        {pfpImages.map((_, index) => {
+        {pfpVideoUrls.map((_, index) => {
           const isSelected = index === selectedImage;
           return (
             <div key={index} onClick={() => selectImage(index)}>
@@ -453,10 +504,29 @@ function App() {
             selectGeonode(index);
           }}
         >
-          {thxnodeImages.map((item, index) => {
+          {thxGeonodesVideoUrls.map(({ video, poster }, index) => {
             return (
               <div key={index} className="collection-image">
-                <img src={item} />
+                {/* <img src={item} /> */}
+                <ReactPlayer
+                  className='video-player'
+                  url={video}
+                  // config={{
+                  //   file: {
+                  //     attributes: {
+                  //       poster,
+                  //       preload: 'none',
+                  //     },
+                  //   },
+                  // }}
+                  height='100%'
+                  width='100%'
+                  controls={false}
+                  playing={index === selectedGeonode}
+                  muted={true}
+                  loop
+                  playsinline
+                />
               </div>
             );
           })}
@@ -470,7 +540,7 @@ function App() {
           />
         </div>
         <div className='gallery-indicators'>
-          {thxnodeImages.map((_, index) => {
+          {thxGeonodesVideoUrls.map((_, index) => {
             const isSelected = index === selectedGeonode;
             return (
               <div key={index} onClick={() => selectGeonode(index)}>
