@@ -135,7 +135,7 @@ function App() {
     });
 
     scroll(({ y }) => {
-      if (y.current + 1 <= y.targetOffset || y.current > y.containerLength + y.targetOffset) {
+      if (y.current + 1 <= y.targetOffset || y.current > y.containerLength + y.targetOffset - 62) {
         progressCollectionPfp.style.height = "0px"
       } else {
         progressCollectionPfp.style.height = "56px"
@@ -176,19 +176,34 @@ function App() {
     }
   };
 
-  const handleMouseEnter = () => {
-    const overlay = document.querySelector('.slider-overlay');
-    if (!overlay) return;
+  // const handleMouseEnter = () => {
+  //   const overlay = document.querySelector('.slider-overlay');
+  //   if (!overlay) return;
 
-    overlay.classList.add('slider-overlay-visible');
-  };
+  //   overlay.classList.add('slider-overlay-visible');
+  // };
 
-  const handleMouseLeave = () => {
-    const overlay = document.querySelector('.slider-overlay');
-    if (!overlay) return;
+  // const handleMouseLeave = () => {
+  //   const overlay = document.querySelector('.slider-overlay');
+  //   if (!overlay) return;
 
-    overlay.classList.remove('slider-overlay-visible');
-  };
+  //   overlay.classList.remove('slider-overlay-visible');
+  // };
+
+  // useEffect(() => {
+  //   // animateLogo();
+  // }, []);
+
+  // const animateLogo = () => {
+  //   document.querySelector('.geonodes-logo')?.addEventListener('mouseenter', () => {
+  //     console.log('xd?1')
+  //     animate(
+  //       ".geonodes-logo-graphic",
+  //       { x: -120, rotate: 45 },
+  //       { duration: 0.5 }
+  //     )
+  //   });
+  // };
 
   return (
     <div className="App">
