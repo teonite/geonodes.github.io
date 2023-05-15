@@ -190,20 +190,27 @@ function App() {
   //   overlay.classList.remove('slider-overlay-visible');
   // };
 
-  // useEffect(() => {
-  //   // animateLogo();
-  // }, []);
+  useEffect(() => {
+    animateLogo();
+  }, []);
 
-  // const animateLogo = () => {
-  //   document.querySelector('.geonodes-logo')?.addEventListener('mouseenter', () => {
-  //     console.log('xd?1')
-  //     animate(
-  //       ".geonodes-logo-graphic",
-  //       { x: -120, rotate: 45 },
-  //       { duration: 0.5 }
-  //     )
-  //   });
-  // };
+  const animateLogo = () => {
+    document.querySelector('.geonodes-logo')?.addEventListener('mouseenter', () => {
+      animate(
+        ".geonodes-logo-graphic",
+        { x: 130 },
+        { duration: 0.5 }
+      )
+    });
+
+    document.querySelector('.geonodes-logo')?.addEventListener('mouseleave', () => {
+      animate(
+        ".geonodes-logo-graphic",
+        { x: 0 },
+        { duration: 0.5 }
+      )
+    });
+  };
 
   return (
     <div className="App">
@@ -325,21 +332,26 @@ function App() {
         id="header"
         whileHover='hover'
       >
-        <img src={logo} alt="geonodes.xyz logo" className='geonodes-logo' style={{ backgroundColor: 'white', zIndex: 100 }} />
+        <img
+          src={logo}
+          alt="geonodes.xyz logo"
+          className='geonodes-logo'
+          style={{ backgroundColor: 'white', zIndex: 100 }}
+        />
         <motion.img
           style={{
             marginLeft: -120,
-            left: 0,
-            position: 'absolute',
+            // left: 0,
+            // position: 'absolute',
           }}
           variants={{
-            hover: {
-              left: 300,
-              transition: {
-                type: 'spring',
-                duration: 0.8,
-              },
-            },
+            // hover: {
+            //   left: 300,
+            //   transition: {
+            //     type: 'spring',
+            //     duration: 0.8,
+            //   },
+            // },
           }}
           src={geonodeGraphic}
           className="geonodes-logo-graphic"
