@@ -1,4 +1,4 @@
-export type PFPVideoUrl = {
+export type VideoURL = {
   video: string;
   poster: string;
 };

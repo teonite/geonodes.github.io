@@ -4,24 +4,18 @@ export const initAppScrolling = () => {
   const item = document.getElementById('welcome');
   const item2 = document.getElementById('geonodes');
   const item3 = document.getElementById('collection-pfp');
-  const item4 = document.getElementById('collection-thxnodes');
 
   const progressWelcome = document.getElementById('progress-welcome');
   const progressGeonodes = document.getElementById('progress-geonodes');
   const progressCollectionPfp = document.getElementById('progress-collection-pfp');
-  const progressCollectionThxnodes = document.getElementById(
-    'progress-collection-thxnodes'
-  );
 
   if (
     !item ||
     !item2 ||
     !item3 ||
-    !item4 ||
     !progressWelcome ||
     !progressGeonodes ||
-    !progressCollectionPfp ||
-    !progressCollectionThxnodes
+    !progressCollectionPfp
   ) {
     return;
   }
@@ -71,22 +65,6 @@ export const initAppScrolling = () => {
     },
     {
       target: item3,
-    }
-  );
-
-  scroll(
-    ({ y }) => {
-      if (
-        y.current + 1 <= y.targetOffset ||
-        y.current > y.containerLength + y.targetOffset
-      ) {
-        progressCollectionThxnodes.style.height = '0px';
-      } else {
-        progressCollectionThxnodes.style.height = '56px';
-      }
-    },
-    {
-      target: item4,
     }
   );
 };

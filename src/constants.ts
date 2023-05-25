@@ -13,7 +13,11 @@ import poster_KC123335648 from './assets/images/video_posters/KC123335648.jpg';
 import poster_KK068123852 from './assets/images/video_posters/KK068123852.jpg';
 import poster_MG019297983 from './assets/images/video_posters/MG019297983.jpg';
 import poster_RO134319190 from './assets/images/video_posters/RO134319190.jpg';
-import { PFPVideoUrl } from './types';
+import poster_thx0001 from './assets/images/video_posters/thx-0001.png';
+import poster_thx0002 from './assets/images/video_posters/thx-0002.png';
+import poster_thx0003 from './assets/images/video_posters/thx-0003.png';
+import poster_thx0004 from './assets/images/video_posters/thx-0004.png';
+import { VideoURL } from './types';
 
 export const pfpImages = [
   pfp1,
@@ -29,7 +33,7 @@ export const pfpImages = [
   pfp10,
 ];
 
-export const pfpVideoUrls: PFPVideoUrl[] = [
+export const pfpVideoUrls: VideoURL[] = [
   {
     video: 'videos/RO134319190/master.m3u8',
     poster: poster_RO134319190,
@@ -49,5 +53,24 @@ export const pfpVideoUrls: PFPVideoUrl[] = [
   {
     video: 'videos/MG019297983/master.m3u8',
     poster: poster_MG019297983,
+  },
+];
+
+export const thxVideoUrls: VideoURL[] = [
+  {
+    video: 'videos/thx-0001/master.m3u8',
+    poster: poster_thx0001,
+  },
+  {
+    video: 'videos/thx-0002/master.m3u8',
+    poster: poster_thx0002,
+  },
+  {
+    video: 'videos/thx-0003/master.m3u8',
+    poster: poster_thx0003,
+  },
+  {
+    video: 'videos/thx-0004/master.m3u8',
+    poster: poster_thx0004,
   },
 ];
