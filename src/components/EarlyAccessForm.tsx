@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError, isAxiosError } from 'axios';
 import { useForm } from 'react-hook-form';
 import isEmail from 'validator/lib/isEmail';
 
@@ -15,20 +15,11 @@ export const EarlyAccessForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm<FormValues>();
 
-  const closeModal = (event: any) => {
-    const modal = document.querySelector('.early-access-modal');
-    if (!modal) return;
-
-    if (event.target.className === 'early-access-modal') {
-      modal.classList.add('hidden');
-    }
-  };
-
   const onSubmit = (data: FormValues) => {
     return submitForm(data);
   };
 
-  const submitForm = (data: FormValues) => {
+  const submitForm = async (data: FormValues) => {
     const formData = new FormData();
 
     formData.append('name', data.name);
@@ -40,7 +31,7 @@ export const EarlyAccessForm = () => {
         const generalErrorMessage =
           'Something happened on our end. Please try again later.';
 
-        if (axios.isAxiosError(e)) {
+        if (isAxiosError(e)) {
           setError('email', { message: generalErrorMessage, type: 'custom' });
         } else {
           setError('email', { message: generalErrorMessage, type: 'custom' });
