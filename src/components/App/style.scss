@@ -1,8 +1,4 @@
-@use './fonts';
-@use './base';
-@use './buttons';
-
-@use '/src/styles/utils/bootstrap' as *;
+@use '/src/shared/scss/utils/bootstrap' as *;
 
 #header {
   padding: 2rem;
@@ -408,7 +404,6 @@ footer {
   font-weight: bold;
 }
 
-
 .navigation-slider {
   position: fixed;
   top: 30vh;
@@ -470,7 +465,6 @@ footer {
     & > .navigation-slider-item-progress {
       width: 6px;
     }
-
   }
 }
 
