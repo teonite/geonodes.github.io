@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 interface Props {
   Icon: React.ElementType;
   url: string;
   text?: string;
   odd?: boolean;
-};
+}
 
-const ExternalLink = ({ Icon, url, text, odd = false }: Props) => {
+export const ExternalLink = ({ Icon, url, text, odd = false }: Props) => {
   const [isHovered, setHovered] = useState(false);
 
   return (
     <a
       href={url}
-      target='_blank'
-      rel='noreferrer noopener'
-      className='icon-button-external-link'
+      target="_blank"
+      rel="noreferrer noopener"
+      className="icon-button-external-link"
       onMouseEnter={() => {
         if (!isHovered) {
           setHovered(true);
@@ -32,5 +32,3 @@ const ExternalLink = ({ Icon, url, text, odd = false }: Props) => {
     </a>
   );
 };
-
-export default ExternalLink;

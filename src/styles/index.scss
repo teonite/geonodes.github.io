@@ -2,7 +2,7 @@
 @use './base';
 @use './buttons';
 
-@use '/src/styles/utils/bootstrap' as bs;
+@use '/src/styles/utils/bootstrap' as *;
 
 #header {
   padding: 2rem;
@@ -14,7 +14,7 @@
 
   & > .geonodes-logo {
     padding-left: 2rem;
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       padding-left: 5rem;
     }
   }
@@ -27,10 +27,10 @@
 #welcome {
   padding-left: 2rem;
   padding-right: 2rem;
-  font-family: "Borna";
+  font-family: 'Borna';
   padding-bottom: 5rem;
-  
-  @include bs.media-breakpoint-up(xl) {
+
+  @include media-breakpoint-up(xl) {
     padding-left: 5rem;
     padding-right: 5rem;
   }
@@ -38,22 +38,18 @@
   & > .welcome-container {
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
     gap: 20px;
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       flex-direction: row-reverse;
     }
 
     & > .welcome-content {
       display: flex;
-      // flex: 0.5;
       flex-direction: column;
       gap: 30px;
-      // flex: 1;
 
-      @include bs.media-breakpoint-up(xl) {
-        // flex: 0.5;
+      @include media-breakpoint-up(xl) {
       }
 
       & > h3 {
@@ -62,11 +58,11 @@
         line-height: 94%;
         margin: 0;
 
-        @include bs.media-breakpoint-up(md) {
+        @include media-breakpoint-up(md) {
           font-size: 88px;
         }
 
-        @include bs.media-breakpoint-up(xxl) {
+        @include media-breakpoint-up(xxl) {
           font-size: 128px;
         }
       }
@@ -83,14 +79,13 @@
       flex: 1;
       justify-content: center;
 
-      @include bs.media-breakpoint-up(xl) {
+      @include media-breakpoint-up(xl) {
         display: block;
         flex: 0.5;
       }
-  
+
       & > img {
-        // max-width: 100%;
-        @include bs.media-breakpoint-down(xl) {
+        @include media-breakpoint-down(xl) {
           max-width: 100%;
         }
       }
@@ -108,7 +103,7 @@
     min-width: 100%;
     margin-left: -20%;
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       max-width: 100%;
       margin-left: 0;
     }
@@ -117,35 +112,28 @@
   & > .geonodes-content {
     position: absolute;
     left: 50%;
-    // top: 50%;
-    // transform: translate(-50%,-50%);
     top: 40%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       margin-top: 20px;
-    }
-
-    & > .geonodes-logo-container {
-      // position: absolute;
     }
 
     & > div > .geonodes-logo {
       max-width: 182.94px;
 
-      @include bs.media-breakpoint-up(xl) {
+      @include media-breakpoint-up(xl) {
         max-width: unset;
       }
     }
 
     & > .geonodes-title {
-
-      @include bs.media-breakpoint-up(xl) {
+      @include media-breakpoint-up(xl) {
         position: absolute;
         bottom: -260px;
       }
@@ -153,7 +141,7 @@
       & > .geonodes-graphic {
         max-width: 238.33px;
 
-        @include bs.media-breakpoint-up(xl) {
+        @include media-breakpoint-up(xl) {
           max-width: unset;
         }
       }
@@ -173,7 +161,7 @@
   padding-bottom: 4rem;
   font-family: 'Borna';
 
-  @include bs.media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xl) {
     align-items: flex-start;
     padding-left: 5rem;
     padding-right: 5rem;
@@ -191,7 +179,7 @@
     font-weight: normal;
     line-height: 28.8px;
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       max-width: 500px;
     }
   }
@@ -203,7 +191,7 @@
 }
 
 .collection-image {
-  @include bs.media-breakpoint-down(xl) {
+  @include media-breakpoint-down(xl) {
     height: 300px;
   }
 
@@ -254,7 +242,7 @@
     cursor: pointer;
   }
 
-  @include bs.media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xl) {
     width: 100%;
   }
 }
@@ -267,7 +255,7 @@ footer {
   flex: 1;
   margin-top: 2rem;
 
-  @include bs.media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xl) {
     flex-direction: row;
     align-items: flex-start;
     padding-left: 5rem;
@@ -283,7 +271,7 @@ footer {
     margin-top: 3rem;
     cursor: pointer;
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       margin-bottom: 1rem;
       margin-top: 0;
     }
@@ -291,7 +279,7 @@ footer {
     & > .geonodes-graphic {
       max-width: 200px;
 
-      @include bs.media-breakpoint-up(xl) {
+      @include media-breakpoint-up(xl) {
         display: none;
       }
     }
@@ -299,7 +287,7 @@ footer {
     & > .geonodes-graphic-desktop {
       max-width: 115px;
 
-      @include bs.media-breakpoint-down(xl) {
+      @include media-breakpoint-down(xl) {
         display: none;
       }
     }
@@ -307,7 +295,7 @@ footer {
     & > .footer-logo-geonodes {
       max-width: 100px;
 
-      @include bs.media-breakpoint-up(xl) {
+      @include media-breakpoint-up(xl) {
         // max-width: auto;
       }
     }
@@ -320,11 +308,11 @@ footer {
     background-color: black;
     margin-top: 1rem;
 
-    @include bs.media-breakpoint-down(xl) {
+    @include media-breakpoint-down(xl) {
       display: none;
     }
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       width: auto;
       background-color: #fff;
     }
@@ -343,7 +331,7 @@ footer {
       display: flex;
     }
 
-    @include bs.media-breakpoint-up(xl) {
+    @include media-breakpoint-up(xl) {
       display: none;
     }
   }
@@ -360,7 +348,6 @@ footer {
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(5px);
   z-index: 9999;
-  // TODO: add blur
 }
 
 .early-access-modal-content {
@@ -368,7 +355,7 @@ footer {
   border-radius: 0;
   background-color: #fff;
 
-  @include bs.media-breakpoint-up(xl) {
+  @include media-breakpoint-up(xl) {
     width: 400px;
     min-height: 400px;
   }
@@ -421,17 +408,6 @@ footer {
   font-weight: bold;
 }
 
-.App {
-  // height: 100vh;
-  // scroll-behavior: smooth;
-  // overflow: auto;
-  // scroll-snap-type: y mandatory;
-  // overflow-y: scroll;
-}
-
-section {
-  // scroll-snap-align: start;
-}
 
 .navigation-slider {
   position: fixed;
@@ -444,7 +420,7 @@ section {
   align-items: flex-end;
   z-index: 1000;
 
-  @include bs.media-breakpoint-down(xl) {
+  @include media-breakpoint-down(xl) {
     display: none;
   }
 }
@@ -466,7 +442,7 @@ section {
     }
     & > .navigation-slider-item-inner {
       width: 6px;
-      transition: .3s;
+      transition: 0.3s;
     }
 
     & > .navigation-slider-item-progress {
@@ -488,45 +464,34 @@ section {
   &:hover {
     & > .navigation-slider-item-inner {
       width: 6px;
-      transition: .3s;
+      transition: 0.3s;
     }
 
     & > .navigation-slider-item-progress {
       width: 6px;
     }
 
-    // & > .navigation-slider-item-title {
-    //   opacity: 1;
-    //   z-index: 1000;
-    // }
-
-    // .slider-overlay {
-    //   opacity: 1;
-    //   z-index: 22000;
-    // }
   }
 }
 
 .navigation-slider-item-inner {
-  // position: absolute;
   width: 2px;
   height: 56px;
   background-color: black;
-  transition: width .3s;
+  transition: width 0.3s;
 }
 
 .selected {
-  // background-color: #00EECC;
   width: 6px;
 }
 
 .navigation-slider-item-progress {
   position: absolute;
-  background-color: #00EECC;
+  background-color: #00eecc;
   // height: 30px;
   height: 0;
   width: 2px;
-  transition: width .3s;
+  transition: width 0.3s;
 }
 
 .navigation-slider-item-title {
@@ -536,7 +501,7 @@ section {
   opacity: 0;
   font-weight: bold;
   right: 30px;
-  transition: all .3s;
+  transition: all 0.3s;
   text-align: center;
   display: flex;
   align-items: center;
@@ -550,19 +515,19 @@ section {
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 
   &-visible {
     opacity: 1;
     z-index: 800;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
   }
 }
 
 .video-player {
   & > video {
     object-fit: cover;
-    @include bs.media-breakpoint-down(xl) {
+    @include media-breakpoint-down(xl) {
       object-position: 65%;
     }
   }
@@ -571,7 +536,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    @include bs.media-breakpoint-down(xl) {
+    @include media-breakpoint-down(xl) {
       object-position: 65%;
     }
   }

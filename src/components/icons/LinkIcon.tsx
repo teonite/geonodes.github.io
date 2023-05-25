@@ -1,10 +1,8 @@
-import * as React from "react"
-
 type Props = {
   color?: string;
 };
 
-const LinkIcon = ({ color = '#fff' }: Props) => (
+export const LinkIcon = ({ color = '#fff' }: Props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={17} fill="none">
     <path
       fill={color}
@@ -13,6 +11,4 @@ const LinkIcon = ({ color = '#fff' }: Props) => (
       clipRule="evenodd"
     />
   </svg>
-)
-export default LinkIcon;
-
+);
