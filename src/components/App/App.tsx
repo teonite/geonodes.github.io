@@ -2,29 +2,19 @@ import './style.scss';
 
 import { motion } from 'framer-motion';
 import { animate } from 'motion';
-import { MouseEventHandler, useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
-import { Carousel } from 'react-responsive-carousel';
+import { MouseEventHandler, useEffect } from 'react';
 
 import geonodeGraphic from '../../assets/images/geonodes.svg';
 import logo from '../../assets/images/logo.svg';
 import logoLarge from '../../assets/images/logo-large.svg';
 import nftGraphic from '../../assets/images/NFT.svg';
-import tntLogoBlack from '../../assets/images/tnt-logo-black.svg';
-import tntLogoWhite from '../../assets/images/tnt-logo-white.svg';
 import welcomeGraphic from '../../assets/images/welcome-graphic.png';
-import { pfpVideoUrls } from '../../constants';
 import { EarlyAccessForm } from '../../shared/components/layout/EarlyAccessForm';
-import { ExternalLink } from '../../shared/components/layout/ExternalLink';
-import { GalleryIndicator } from '../icons/GalleryIndicator';
-import { LinkIcon } from '../icons/LinkIcon';
-import { TntLogo } from '../icons/TntLogo';
+import { Footer } from '../../shared/components/layout/Footer/Footer';
+import { PfpSection } from './components/PfpSection';
 import { initAppScrolling } from './utils/initAppScrolling';
 
 export const App = () => {
-  const [selectedImage, selectImage] = useState(0);
-  const [tntLogo, setTntLogo] = useState(tntLogoWhite);
-
   const onClick = () => {
     const modal = document.querySelector('.early-access-modal');
     if (!modal) return;
@@ -67,7 +57,7 @@ export const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <div className="slider-overlay" />
       <div className="navigation-slider">
         <div id="slider-welcome" className="navigation-slider-item">
@@ -247,61 +237,6 @@ export const App = () => {
         </motion.div>
       </section>
 
-      <section id="collection-pfp" className="collection">
-        <h3>teonite pfp</h3>
-        <p>
-          teonite is a deep tech studio and used geonodes.xyz platform to render and mint
-          a custom PFP NFT for each employee.
-        </p>
-        <Carousel
-          infiniteLoop
-          autoPlay
-          showArrows={false}
-          showStatus={false}
-          showThumbs={false}
-          showIndicators={false}
-          selectedItem={selectedImage}
-          onChange={(index) => {
-            selectImage(index);
-          }}
-        >
-          {pfpVideoUrls.map(({ video }, index) => {
-            return (
-              <div key={index} className="collection-image">
-                <ReactPlayer
-                  className="video-player"
-                  url={video}
-                  height="100%"
-                  width="100%"
-                  controls={false}
-                  playing={index === selectedImage}
-                  muted={true}
-                  loop
-                  playsinline
-                />
-              </div>
-            );
-          })}
-        </Carousel>
-        <div className="gallery-link">
-          <ExternalLink
-            Icon={LinkIcon}
-            url="https://opensea.io/collection/teonite-geonodes"
-            text="view full collection on opensea.io"
-          />
-        </div>
-        <div className="gallery-indicators">
-          {pfpVideoUrls.map((_, index) => {
-            const isSelected = index === selectedImage;
-            return (
-              <div key={index} onClick={() => selectImage(index)}>
-                <GalleryIndicator color={isSelected ? '#00EECC' : '#fff'} />
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
       {/*
       <section id='collection-thxnodes' className="collection collection-odd">
         <h3>teonite thxnodes</h3>
@@ -358,42 +293,14 @@ export const App = () => {
         </div>
       </section>
         */}
-      <footer>
-        <motion.div
-          className="footer-logo"
-          whileHover="hover"
-          onClick={() => {
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            });
-          }}
-        >
-          <img src={logo} className="footer-logo-geonodes" alt="geonodes.xyz logo" />
-          <img src={geonodeGraphic} className="geonodes-graphic" />
-        </motion.div>
-        <div className="footer-teonite">
-          <motion.a href="https://teonite.com" target="_blank">
-            <motion.img
-              src={tntLogo}
-              onMouseEnter={() => setTntLogo(tntLogoBlack)}
-              onMouseLeave={() => setTntLogo(tntLogoWhite)}
-              alt="Teonite logo"
-            />
-          </motion.a>
-        </div>
-        <div className="footer-teonite-mobile">
-          <a href="https://teonite.com" target="_blank" rel="noreferrer">
-            <TntLogo textColor="#fff" />
-          </a>
-        </div>
-      </footer>
+      <PfpSection />
 
       <div className="early-access-modal hidden" onClick={closeModal}>
         <div className="early-access-modal-content">
           <EarlyAccessForm />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

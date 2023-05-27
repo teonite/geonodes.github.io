@@ -17,7 +17,7 @@ import poster_thx0001 from './assets/images/video_posters/thx-0001.png';
 import poster_thx0002 from './assets/images/video_posters/thx-0002.png';
 import poster_thx0003 from './assets/images/video_posters/thx-0003.png';
 import poster_thx0004 from './assets/images/video_posters/thx-0004.png';
-import { VideoURL } from './types';
+import { ThxNode, VideoURL } from './types';
 
 export const pfpImages = [
   pfp1,
@@ -56,21 +56,57 @@ export const pfpVideoUrls: VideoURL[] = [
   },
 ];
 
-export const thxVideoUrls: VideoURL[] = [
+export const thxNodes: ThxNode[] = [
   {
-    video: 'videos/thx-0001/master.m3u8',
-    poster: poster_thx0001,
+    id: 1,
+    attributes: {
+      initials: 'JL',
+      baseshape: 'cylinder',
+      sculpture: 'beethoveen',
+      accentColor: 'e6293c',
+    },
+    video: {
+      video: 'videos/thx-0001/master.m3u8',
+      poster: poster_thx0001,
+    },
   },
   {
-    video: 'videos/thx-0002/master.m3u8',
-    poster: poster_thx0002,
+    id: 2,
+    attributes: {
+      initials: 'KGvB',
+      baseshape: 'plane',
+      sculpture: 'gutenberg',
+      accentColor: '3b9dd6',
+    },
+    video: {
+      video: 'videos/thx-0002/master.m3u8',
+      poster: poster_thx0002,
+    },
   },
   {
-    video: 'videos/thx-0003/master.m3u8',
-    poster: poster_thx0003,
+    id: 3,
+    attributes: {
+      initials: 'BS',
+      baseshape: 'sphere',
+      sculpture: 'einstein',
+      accentColor: '3b9dd6',
+    },
+    video: {
+      video: 'videos/thx-0003/master.m3u8',
+      poster: poster_thx0003,
+    },
   },
   {
-    video: 'videos/thx-0004/master.m3u8',
-    poster: poster_thx0004,
+    id: 4,
+    attributes: {
+      initials: 'MK',
+      baseshape: 'cube',
+      sculpture: 'nimph',
+      accentColor: '3684fc',
+    },
+    video: {
+      video: 'videos/thx-0004/master.m3u8',
+      poster: poster_thx0004,
+    },
   },
 ];

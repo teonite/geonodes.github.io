@@ -1,0 +1,38 @@
+@use '../../../scss/utils/bootstrap' as *;
+
+.external-link {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  text-decoration-color: transparent;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  justify-items: flex-start;
+  column-gap: 5px;
+
+  & > svg {
+    fill: #fff;
+  }
+
+  &:hover {
+    & > svg {
+      fill: #00eecc;
+    }
+  }
+}
+
+// when section is odd fill with black by default
+
+#app {
+  section {
+    &.odd {
+      .external-link {
+        color: black;
+        & > svg {
+          fill: black;
+        }
+      }
+    }
+  }
+}
