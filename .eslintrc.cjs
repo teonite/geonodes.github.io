@@ -19,6 +19,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
+    'import',
     'react',
     'react-hooks',
     '@typescript-eslint',
@@ -26,6 +27,12 @@ module.exports = {
     'prettier',
   ],
   settings: {
+    'import/resolver': {
+      typescript: {},
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     react: {
       version: 'detect',
     },
@@ -57,5 +64,6 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 'off',
     'react/display-name': 'off',
+    'import/no-unresolved': 'error',
   },
 };

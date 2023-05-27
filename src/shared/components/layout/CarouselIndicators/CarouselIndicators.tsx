@@ -1,16 +1,20 @@
+import './style.scss';
+
+import classNames from 'classnames';
 import { range } from 'lodash-es';
 
-import { GalleryIndicator } from '../../../components/icons/GalleryIndicator';
+import { GalleryIndicator } from '../../../../components/icons/GalleryIndicator';
 
 type Props = {
   itemsCount: number;
   selectedIndex: number;
   onChange: (index: number) => void;
 };
+
 export const CarouselIndicators = ({ itemsCount, onChange, selectedIndex }: Props) => {
   return (
-    <div className="gallery-indicators">
-      {range(0, itemsCount - 1).map((index) => (
+    <div className="carousel-indicators">
+      {range(0, itemsCount).map((index) => (
         <div
           key={index}
           onClick={() => {
@@ -18,9 +22,11 @@ export const CarouselIndicators = ({ itemsCount, onChange, selectedIndex }: Prop
               onChange(index);
             }
           }}
-          className="indicator-container"
+          className={classNames('indicator-container', {
+            active: index === selectedIndex,
+          })}
         >
-          <GalleryIndicator color={index == selectedIndex ? '#00EECC' : '#fff'} />
+          <GalleryIndicator />
         </div>
       ))}
     </div>

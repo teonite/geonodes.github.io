@@ -1,10 +1,10 @@
-import geonodeGraphic from '@assets/images/geonodes.svg';
-import logo from '@assets/images/logo.svg';
-import tntLogoBlack from '@assets/images/tnt-logo-black.svg';
-import tntLogoWhite from '@assets/images/tnt-logo-white.svg';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
+import geonodeGraphic from '../../../../assets/images/geonodes.svg';
+import logo from '../../../../assets/images/logo.svg';
+import tntLogoBlack from '../../../../assets/images/tnt-logo-black.svg';
+import tntLogoWhite from '../../../../assets/images/tnt-logo-white.svg';
 import { TntLogo } from '../../../../components/icons/TntLogo';
 
 export const Footer = () => {

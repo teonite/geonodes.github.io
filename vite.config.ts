@@ -17,7 +17,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@scssutils': path.resolve(__dirname, '/src/shared/scss/utils'),
-      '@assets': path.resolve(__dirname, '/src/assets'),
     },
   },
 });

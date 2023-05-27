@@ -1,17 +1,28 @@
 import './style.scss';
 
+import classNames from 'classnames';
 import { useMemo, useState } from 'react';
 
 import { thxNodes } from '../../../../constants';
-import { CarouselIndicators } from '../../../../shared/components/layout/CarouselIndicators';
+import { CarouselIndicators } from '../../../../shared/components/layout/CarouselIndicators/CarouselIndicators';
+import { ExternalLink } from '../../../../shared/components/layout/ExternalLink/ExternalLink';
 import { VideoCarousel } from '../../../../shared/components/layout/VideoCarousel';
+
+type Props = {
+  odd?: boolean;
+};
 
 const videosToPlay = thxNodes.map((n) => n.video);
 
-export const ThxSection = () => {
+export const ThxSection = ({ odd = false }: Props) => {
   const [selected, setSelected] = useState(0);
   return (
-    <section id="thx-nodes">
+    <section
+      id="thx-nodes"
+      className={classNames({
+        odd: odd,
+      })}
+    >
       <header>
         <h2>teonite THX nodex</h2>
         <p>
@@ -19,7 +30,7 @@ export const ThxSection = () => {
           collaboration and highest value
         </p>
       </header>
-      <div className="collection">
+      <div className="thx-collection">
         <VideoCarousel
           videos={videosToPlay}
           selectedVideoIndex={selected}
@@ -56,6 +67,10 @@ const NodeInfo = ({ selected }: NodeInfoProps) => {
         <br />
         {thxNode.attributes.accentColor}
       </p>
+      <ExternalLink
+        url="https://opensea.io/collection/teonite-geonodes"
+        text="view full collection on opensea.io"
+      />
     </div>
   );
 };

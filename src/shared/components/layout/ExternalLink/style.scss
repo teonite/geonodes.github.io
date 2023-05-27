@@ -1,4 +1,4 @@
-@use '../../../scss/utils/bootstrap' as *;
+@use '@scssutils' as *;
 
 .external-link {
   color: #fff;
@@ -8,8 +8,14 @@
   display: flex;
   flex-flow: row nowrap;
   align-content: center;
+  align-items: center;
   justify-items: flex-start;
   column-gap: 5px;
+
+  & > span {
+    @include typography(subtext);
+    color: var(--text-secondary);
+  }
 
   & > svg {
     fill: #fff;
@@ -17,7 +23,9 @@
 
   &:hover {
     & > svg {
-      fill: #00eecc;
+      path {
+        fill: var(--accent);
+      }
     }
   }
 }
@@ -28,9 +36,20 @@
   section {
     &.odd {
       .external-link {
-        color: black;
+        & > span {
+          color: var(--text-primary);
+        }
         & > svg {
-          fill: black;
+          path {
+            fill: var(--secondary);
+          }
+        }
+        &:hover {
+          & > svg {
+            path {
+              fill: var(--accent);
+            }
+          }
         }
       }
     }

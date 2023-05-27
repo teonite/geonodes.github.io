@@ -12,6 +12,7 @@ import welcomeGraphic from '../../assets/images/welcome-graphic.png';
 import { EarlyAccessForm } from '../../shared/components/layout/EarlyAccessForm';
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { PfpSection } from './components/PfpSection';
+import { ThxSection } from './components/ThxSection/ThxSection';
 import { initAppScrolling } from './utils/initAppScrolling';
 
 export const App = () => {
@@ -57,7 +58,7 @@ export const App = () => {
   };
 
   return (
-    <div className="app">
+    <div id="app">
       <div className="slider-overlay" />
       <div className="navigation-slider">
         <div id="slider-welcome" className="navigation-slider-item">
@@ -294,6 +295,7 @@ export const App = () => {
       </section>
         */}
       <PfpSection />
+      <ThxSection odd />
 
       <div className="early-access-modal hidden" onClick={closeModal}>
         <div className="early-access-modal-content">

@@ -12,12 +12,7 @@ interface Props {
 
 export const ExternalLink = ({ icon, url, text }: Props) => {
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noreferrer noopener"
-      className="icon-button-external-link"
-    >
+    <a href={url} target="_blank" rel="noreferrer noopener" className="external-link">
       {text ? <span>{text}</span> : null}
       {icon ?? <LinkIcon />}
     </a>

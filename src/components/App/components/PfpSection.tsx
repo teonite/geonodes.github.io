@@ -1,15 +1,20 @@
+import classNames from 'classnames';
 import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Carousel } from 'react-responsive-carousel';
 
 import { pfpVideoUrls } from '../../../constants';
-import { CarouselIndicators } from '../../../shared/components/layout/CarouselIndicators';
+import { CarouselIndicators } from '../../../shared/components/layout/CarouselIndicators/CarouselIndicators';
 import { ExternalLink } from '../../../shared/components/layout/ExternalLink/ExternalLink';
 
-export const PfpSection = () => {
+type Props = {
+  odd?: boolean;
+};
+
+export const PfpSection = ({ odd = false }: Props) => {
   const [selected, setSelected] = useState(0);
   return (
-    <section id="collection-pfp" className="collection">
+    <section id="collection-pfp" className={classNames('collection', { odd: odd })}>
       <h3>teonite pfp</h3>
       <p>
         teonite is a deep tech studio and used geonodes.xyz platform to render and mint a
