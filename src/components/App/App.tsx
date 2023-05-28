@@ -109,26 +109,20 @@ export const App = () => {
             />
           </div>
         </div>
-        {/*
-
-        <div
-          id='slider-collection-thxnodes'
-          className='navigation-slider-item'
-        >
+        <div id="slider-thx-nodes" className="navigation-slider-item">
           <div
-            className='item-container'
+            className="item-container"
             onClick={() => {
               window.scrollTo({
-                top: document.getElementById('collection-thxnodes')?.offsetTop,
+                top: document.getElementById('thx-nodes')?.offsetTop,
                 behavior: 'smooth',
               });
             }}
           >
-            <div className='navigation-slider-item-inner'/>
-            <div id='progress-collection-thxnodes' className='navigation-slider-item-progress' />
+            <div className="navigation-slider-item-inner" />
+            <div id="progress-thx-nodes" className="navigation-slider-item-progress" />
           </div>
         </div>
-        */}
         {/* <div className='navigation-slider-item selected' />
         <div className='navigation-slider-item' /> */}
       </div>
