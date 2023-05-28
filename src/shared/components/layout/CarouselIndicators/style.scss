@@ -1,0 +1,63 @@
+@use '@scssutils' as *;
+
+#app {
+  section {
+    &.odd {
+      .carousel-indicators {
+        & > div {
+          svg {
+            path {
+              fill: var(--secondary);
+            }
+          }
+          &.active {
+            path {
+              fill: var(--accent);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.carousel-indicators {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    cursor: pointer;
+  }
+
+  & > div {
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+
+    @include media-breakpoint-up(xl) {
+      width: 36px;
+      height: 36px;
+    }
+    svg {
+      transform: scale(2);
+      path {
+        fill: var(--primary);
+      }
+    }
+    &.active {
+      svg {
+        path {
+          fill: var(--accent);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+@use '@scssutils' as *;
+
+.external-link {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  text-decoration-color: transparent;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  justify-items: flex-start;
+  column-gap: 5px;
+
+  & > span {
+    @include typography(subtext);
+    color: var(--text-secondary);
+  }
+
+  & > svg {
+    fill: #fff;
+  }
+
+  &:hover {
+    & > svg {
+      path {
+        fill: var(--accent);
+      }
+    }
+  }
+}
+
+// when section is odd fill with black by default
+
+#app {
+  section {
+    &.odd {
+      .external-link {
+        & > span {
+          color: var(--text-primary);
+        }
+        & > svg {
+          path {
+            fill: var(--secondary);
+          }
+        }
+        &:hover {
+          & > svg {
+            path {
+              fill: var(--accent);
+            }
+          }
+        }
+      }
+    }
+  }
+}
