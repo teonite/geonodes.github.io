@@ -110,3 +110,13 @@ export const thxNodes: ThxNode[] = [
     },
   },
 ];
+
+export const Colors = {
+  secondary: '#000000',
+  magenta: '#ff0064',
+  green: '#00ff64',
+  primary: '#ffffff',
+  accent: '#00eecc',
+  textPrimary: '#000000',
+  textSeconadry: '#ffffff',
+};

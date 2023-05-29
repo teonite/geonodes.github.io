@@ -1,9 +1,9 @@
 import './style.scss';
 
 import { motion } from 'framer-motion';
-import { animate, scroll } from 'motion';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
+import { Colors } from '../../../../constants';
 type Props = {
   sections: string[];
 };
@@ -13,40 +13,6 @@ const expandedNavWidth = 6;
 const navElementHeight = 56;
 
 export const SideNavigation = ({ sections }: Props) => {
-  const initRef = useRef(false);
-
-  useEffect(() => {
-    if (initRef.current) {
-      sections.forEach((el) => {
-        const target = document.getElementById(el);
-        const navProgressElement = document.querySelector(
-          `#nav-element-${el} .element-progress`
-        );
-        if (target && navProgressElement) {
-          scroll(
-            ({ y }) => {
-              animate(
-                navProgressElement,
-                {
-                  y: Math.ceil(navElementHeight * y.progress),
-                },
-                {
-                  duration: 0.05,
-                }
-              );
-            },
-            {
-              target: target,
-            }
-          );
-        }
-      });
-    } else {
-      initRef.current = true;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <nav>
       {sections.map((el) => (
@@ -59,6 +25,7 @@ export const SideNavigation = ({ sections }: Props) => {
 type NavElementProps = {
   target: string;
 };
+
 const NavElement = ({ target }: NavElementProps) => {
   const [hover, setHover] = useState(false);
   return (
@@ -90,8 +57,19 @@ const NavElement = ({ target }: NavElementProps) => {
           className="nav-element"
           animate={hover ? 'hovered' : 'idle'}
         >
-          <div className="element-background"></div>
-          <div className="element-progress"></div>
+          <motion.div
+            className="element-background"
+            animate={hover ? 'hovered' : 'idle'}
+            variants={{
+              idle: {
+                backgroundColor: Colors.secondary,
+              },
+              hovered: {
+                backgroundColor: Colors.accent,
+              },
+            }}
+          ></motion.div>
+          <motion.div className="element-progress"></motion.div>
         </motion.div>
       </motion.div>
     </motion.div>

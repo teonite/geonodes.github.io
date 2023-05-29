@@ -5,7 +5,6 @@ import { useMemo, useState } from 'react';
 
 import { thxNodes } from '../../../../constants';
 import { CarouselIndicators } from '../../../../shared/components/layout/CarouselIndicators/CarouselIndicators';
-import { ExternalLink } from '../../../../shared/components/layout/ExternalLink/ExternalLink';
 import { VideoCarousel } from '../../../../shared/components/layout/VideoCarousel';
 
 type Props = {
@@ -67,10 +66,13 @@ const NodeInfo = ({ selected }: NodeInfoProps) => {
         <br />
         {thxNode.attributes.accentColor}
       </p>
+      {/*
+
       <ExternalLink
         url="https://opensea.io/collection/teonite-geonodes"
         text="view full collection on opensea.io"
       />
+      */}
     </div>
   );
 };
