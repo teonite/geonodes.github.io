@@ -1,0 +1,91 @@
+@use '@scssutils' as *;
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 2rem;
+
+  @include media-breakpoint-up(xl) {
+    flex-direction: row;
+    align-items: flex-start;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 1rem;
+  }
+
+  & > .footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    cursor: pointer;
+
+    @include media-breakpoint-up(xl) {
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+
+    & > .geonodes-graphic {
+      max-width: 200px;
+
+      @include media-breakpoint-up(xl) {
+        display: none;
+      }
+    }
+
+    & > .geonodes-graphic-desktop {
+      max-width: 115px;
+
+      @include media-breakpoint-down(xl) {
+        display: none;
+      }
+    }
+
+    & > .footer-logo-geonodes {
+      max-width: 100px;
+
+      @include media-breakpoint-up(xl) {
+        // max-width: auto;
+      }
+    }
+  }
+
+  & > .footer-teonite {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    margin-top: 1rem;
+
+    @include media-breakpoint-down(xl) {
+      display: none;
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: auto;
+      background-color: #fff;
+    }
+  }
+
+  & > .footer-teonite-mobile {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 1rem;
+
+    & > a {
+      display: flex;
+    }
+
+    @include media-breakpoint-up(xl) {
+      display: none;
+    }
+  }
+}
