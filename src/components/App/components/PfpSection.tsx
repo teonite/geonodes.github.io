@@ -15,10 +15,11 @@ export const PfpSection = ({ odd = false }: Props) => {
   const [selected, setSelected] = useState(0);
   return (
     <section id="collection-pfp" className={classNames('collection', { odd: odd })}>
-      <h3>teonite pfp</h3>
+      <h3>teonite geonodes</h3>
       <p>
-        teonite is a deep tech studio and used geonodes.xyz platform to render and mint a
-        custom PFP NFT for each employee.
+        inaugural use case involved leveraging the platform to generate and mint unique
+        PFP for every teonite crew member. This approach enabled testing, exploration, and
+        added an element of fun to the process
       </p>
       <Carousel
         infiniteLoop

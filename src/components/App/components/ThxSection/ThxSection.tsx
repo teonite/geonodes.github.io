@@ -23,10 +23,11 @@ export const ThxSection = ({ odd = false }: Props) => {
       })}
     >
       <header>
-        <h2>teonite THX nodes</h2>
+        <h2>thx-nodes</h2>
         <p>
-          teonite made also a collection for its select clients, as sign of great
-          collaboration and highest value
+          <span className="bold">teonite</span> harnessed the power of the platform by
+          curating a bespoke collection for its most esteemed clients, creating artifacts
+          that reflects their remarkable partnership and unparalleled value.
         </p>
       </header>
       <div className="thx-collection">
