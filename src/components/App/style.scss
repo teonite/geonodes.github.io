@@ -39,7 +39,8 @@
       'content';
 
     @include media-breakpoint-up(xl) {
-      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      grid-template-columns: 4fr 3fr;
       grid-template-areas: 'content video';
     }
 
@@ -165,7 +166,7 @@
     line-height: 28.8px;
 
     @include media-breakpoint-up(xl) {
-      max-width: 500px;
+      max-width: 850px;
     }
   }
 }
