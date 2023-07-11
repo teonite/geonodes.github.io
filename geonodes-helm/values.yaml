@@ -1,0 +1,14 @@
+appName: geonodes
+namepsace: default
+port: 80
+
+image:
+  name: fstanczyk/geonodes
+  tag: latest
+
+deployment:
+  replicas: 1
+
+service:
+  port: 80
+  type: NodePort
