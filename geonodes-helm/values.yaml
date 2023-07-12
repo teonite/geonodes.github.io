@@ -1,6 +1,11 @@
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: ngrok
+
 appName: geonodes
 namepsace: default
-port: 80
+
 
 image:
   name: fstanczyk/geonodes
@@ -8,7 +13,9 @@ image:
 
 deployment:
   replicas: 1
+  port: 80
 
 service:
   port: 80
   type: NodePort
+

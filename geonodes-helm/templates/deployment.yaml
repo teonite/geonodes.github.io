@@ -19,4 +19,4 @@ spec:
       - name: geonode-container
         image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: {{ .Values.port }}
+        - containerPort: {{ .Values.deployment.port }}

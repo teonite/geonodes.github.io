@@ -1,0 +1,24 @@
+# toDo \/
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: {{ .Values.appName }}
+#   namespace: {{ .Values.namespace }}
+# spec:
+#   ingressClassName: ngrok
+#   rules:
+#   - host: 621613a02ac8-5425883557659233681.ngrok-free.app
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: {{ .Values.appName }}
+#             servicePort: 80
+#             serviceName: {{ .Values.appName }}
+#             port:
+#               number: 80
+
+
