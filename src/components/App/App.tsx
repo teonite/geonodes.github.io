@@ -1,17 +1,16 @@
 import './style.scss';
 
 import { motion } from 'framer-motion';
-import { animate } from 'motion';
 import { MouseEventHandler, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 
 import geonodeGraphic from '../../assets/images/geonodes.svg';
-import logo from '../../assets/images/logo.svg';
 import logoLarge from '../../assets/images/logo-large.svg';
 import nftGraphic from '../../assets/images/NFT.svg';
 import { EarlyAccessForm } from '../../shared/components/layout/EarlyAccessForm';
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { SideNavigation } from '../../shared/components/layout/SideNavigation/SideNavigation';
+import { Header } from '../../shared/components/layout/Header/Header';
 import { PfpSection } from './components/PfpSection';
 import { ThxSection } from './components/ThxSection/ThxSection';
 
@@ -42,35 +41,10 @@ export const App = () => {
     }
   };
 
-  useEffect(() => {
-    document.querySelector('.geonodes-logo')?.addEventListener('mouseenter', () => {
-      animate('.geonodes-logo-graphic', { x: 130 }, { duration: 0.5 });
-    });
-
-    document.querySelector('.geonodes-logo')?.addEventListener('mouseleave', () => {
-      animate('.geonodes-logo-graphic', { x: 0 }, { duration: 0.5 });
-    });
-  }, []);
 
   return (
     <div id="app">
-      <motion.div id="header" whileHover="hover">
-        <img
-          src={logo}
-          alt="geonodes.xyz logo"
-          className="geonodes-logo"
-          style={{ backgroundColor: 'white', zIndex: 100 }}
-        />
-        <motion.img
-          style={{
-            marginLeft: -120,
-          }}
-          variants={{}}
-          src={geonodeGraphic}
-          className="geonodes-logo-graphic"
-        />
-      </motion.div>
-
+      <Header />
       <section id="welcome">
         <div className="welcome-container">
           <div className="welcome-content">

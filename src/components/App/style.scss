@@ -1,24 +1,5 @@
 @use '@scssutils' as *;
 
-#header {
-  padding: 2rem;
-  padding-left: 0;
-  display: flex;
-  position: relative;
-  align-items: center;
-  height: 100px;
-
-  & > .geonodes-logo {
-    padding-left: 2rem;
-    @include media-breakpoint-up(xl) {
-      padding-left: 5rem;
-    }
-  }
-
-  & > .geonodes-logo-graphic {
-    max-width: 115px;
-  }
-}
 
 #welcome {
   padding-left: 2rem;
