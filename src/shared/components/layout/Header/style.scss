@@ -11,7 +11,7 @@
   & > .geonodes-logo {
     padding-left: 2rem;
     @include media-breakpoint-up(xl) {
-      padding-left: 5rem;
+      padding-left: 12rem;
     }
   }
 
@@ -20,61 +20,9 @@
   }
 }
 
-#welcome {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  font-family: 'Borna';
-  padding-bottom: 5rem;
-
-  @include media-breakpoint-up(xl) {
-    padding-left: 5rem;
-    padding-right: 5rem;
-  }
-
-  & > .welcome-container {
-    display: grid;
-    gap: 20px;
-    grid-template-areas:
-      'video'
-      'content';
-
-    @include media-breakpoint-up(xl) {
-      gap: 70px;
-      grid-template-columns: 4fr 3fr;
-      grid-template-areas: 'content video';
-    }
-
-    & > .welcome-content {
-      grid-area: content;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-
-      & > p {
-        font-style: italic;
-        font-size: 24px;
-        margin: 0;
-      }
-      
-      & > h3 {
-        font-size: 55px;
-        font-weight: bold;
-        line-height: 94%;
-        margin: 0;
-
-        @include media-breakpoint-up(md) {
-          font-size: 88px;
-        }
-
-        @include media-breakpoint-up(xxl) {
-          font-size: 128px;
-        }
-      }
-    }
-
-    & > #geo-head {
-      grid-area: video;
-      width: 100%;
-    }
-  }
+.header-container{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10%;
+  align-items: center;
 }

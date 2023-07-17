@@ -5,8 +5,13 @@ import { animate } from 'motion';
 import { useEffect } from 'react';
 import geonodeGraphic from '../../../../assets/images/geonodes.svg';
 import logo from '../../../../assets/images/logo.svg';
+import {ShareIcon} from '../../../../components/icons/ShareIcon'
 
-export const Header = () =>{
+interface headerConfig {
+  shareButton: boolean;
+}
+
+export const Header = (config: headerConfig) =>{
     useEffect(() => {
         document.querySelector('.geonodes-logo')?.addEventListener('mouseenter', () => {
           animate('.geonodes-logo-graphic', { x: 130 }, { duration: 0.5 });
@@ -16,22 +21,39 @@ export const Header = () =>{
           animate('.geonodes-logo-graphic', { x: 0 }, { duration: 0.5 });
         });
       }, []);
+    
+    let shareButton = config.shareButton? <ShareButton /> : null
     return (
-        <motion.div id="header" whileHover="hover">
-        <img
-          src={logo}
-          alt="geonodes.xyz logo"
-          className="geonodes-logo"
-          style={{ backgroundColor: 'white', zIndex: 100 }}
-        />
-        <motion.img
-          style={{
-            marginLeft: -120,
-          }}
-          variants={{}}
-          src={geonodeGraphic}
-          className="geonodes-logo-graphic"
-        />
-      </motion.div>
+      <div className='header-container'>
+          <motion.div id="header" whileHover="hover">
+          <img
+            src={logo}
+            alt="geonodes.xyz logo"
+            className="geonodes-logo"
+            style={{ backgroundColor: 'white', zIndex: 100 }}
+          />
+          <motion.img
+            style={{
+              marginLeft: -120,
+            }}
+            variants={{}}
+            src={geonodeGraphic}
+            className="geonodes-logo-graphic"
+          />
+        </motion.div>
+        {shareButton}
+      </div>
     )
+}
+
+
+const ShareButton = () => {
+  return(
+    <div className='share-button-container'>
+      <div className='share-button'>
+        share
+        <ShareIcon />
+      </div>
+    </div>
+  )
 }

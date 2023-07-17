@@ -9,7 +9,7 @@ import { ThxPage } from './components/Thx/thx-page';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <App />
-    {/* <ThxPage /> */}
+    {/* <App /> */}
+    <ThxPage name={'Berndt'} nodeId={3}/>
   </StrictMode>
 );

@@ -1,9 +1,10 @@
 import './style.scss';
 
 import classNames from 'classnames';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { thxNodes } from '../../../../constants';
+import { NodeInfo } from '../../../../shared/components/layout/NodeInfo/NodeInfo';
 import { CarouselIndicators } from '../../../../shared/components/layout/CarouselIndicators/CarouselIndicators';
 import { VideoCarousel } from '../../../../shared/components/layout/VideoCarousel';
 
@@ -44,36 +45,5 @@ export const ThxSection = ({ odd = false }: Props) => {
       </div>
       <NodeInfo selected={selected} />
     </section>
-  );
-};
-
-type NodeInfoProps = {
-  selected: number;
-};
-
-const NodeInfo = ({ selected }: NodeInfoProps) => {
-  const thxNode = useMemo(() => thxNodes[selected], [selected]);
-  return (
-    <div className="info">
-      <h4>
-        thx-{String(thxNode.id).padStart(4, '0')}/
-        {thxNode.attributes.initials.toUpperCase()}
-      </h4>
-      <span>attributes</span>
-      <p className="node-attributes">
-        {thxNode.attributes.baseshape}
-        <br />
-        {thxNode.attributes.sculpture}
-        <br />
-        {thxNode.attributes.accentColor}
-      </p>
-      {/*
-
-      <ExternalLink
-        url="https://opensea.io/collection/teonite-geonodes"
-        text="view full collection on opensea.io"
-      />
-      */}
-    </div>
   );
 };

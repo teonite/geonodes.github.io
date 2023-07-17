@@ -1,0 +1,171 @@
+@use '@scssutils' as *;
+
+#welcome {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: 'Borna';
+  padding-bottom: 5rem;
+
+  @include media-breakpoint-up(xl) {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  & > .welcome-container {
+    display: grid;
+    gap: 20px;
+    grid-template-areas:
+      'video'
+      'content';
+
+    @include media-breakpoint-up(xl) {
+      gap: 70px;
+      grid-template-columns: 4fr 3fr;
+      grid-template-areas: 'content video';
+    }
+
+    & > .welcome-content {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      & > p {
+        font-style: italic;
+        font-size: 24px;
+        margin: 0;
+      }
+      
+      & > h3 {
+        font-size: 55px;
+        font-weight: bold;
+        line-height: 94%;
+        margin: 0;
+
+        @include media-breakpoint-up(md) {
+          font-size: 88px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+          font-size: 128px;
+        }
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.video-player {
+  & > video {
+    object-fit: cover;
+    @include media-breakpoint-down(xl) {
+      object-position: 65%;
+    }
+  }
+
+  & > video[poster] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include media-breakpoint-down(xl) {
+      object-position: 65%;
+    }
+  }
+}
+
+
+.wallet-input-container {
+  display: flex;
+  height: 4.2rem;
+  padding: 0px 0px 0px 0px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+
+  border: 6px solid var(--secondary, #000);
+  text-align: center;
+  font-family: 'Borna';
+  font-size: 18px;
+  letter-spacing: 2.74px;
+  font-style: normal; 
+  text-transform: uppercase;
+
+  & > input {
+    text-align: center;
+    color: black;
+    font-family: 'Borna';
+    font-size: 28px;
+    letter-spacing: 2.74px;
+    font-style: normal; 
+    text-transform: uppercase;
+    width: 100%;
+    height: 120%;
+    border:none; 
+    background: transparent; 
+    outline: 0;
+  }
+
+  & > input::placeholder {
+    text-align: center;
+    color: black;
+    font-family: 'Borna';
+    font-size: 18px;
+    letter-spacing: 2.74px;
+    font-style: normal; 
+    text-transform: uppercase;
+  }
+
+  & > .submit {
+    display: flex;
+    align-items: center;
+  }
+  
+}
+
+.wallet-input-arrow:hover path {
+  fill: var(--accent); /* Set the desired fill color when hovered */
+}
+
+.wallet-input-arrow:hover {
+  cursor: pointer
+}
+
+
+#creationProcess {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-family: 'Borna';
+
+  @include media-breakpoint-up(xl) {
+    align-items: flex-start;
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  & > h3 {
+    font-size: 64px;
+    margin: 0;
+    line-height: 76.8px;
+  }
+
+  & > p {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 28.8px;
+  }
+}

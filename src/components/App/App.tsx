@@ -1,18 +1,15 @@
 import './style.scss';
 
-import { motion } from 'framer-motion';
-import { MouseEventHandler, useEffect } from 'react';
+import { MouseEventHandler } from 'react';
 import ReactPlayer from 'react-player';
-
-import geonodeGraphic from '../../assets/images/geonodes.svg';
-import logoLarge from '../../assets/images/logo-large.svg';
-import nftGraphic from '../../assets/images/NFT.svg';
 import { EarlyAccessForm } from '../../shared/components/layout/EarlyAccessForm';
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { SideNavigation } from '../../shared/components/layout/SideNavigation/SideNavigation';
 import { Header } from '../../shared/components/layout/Header/Header';
 import { PfpSection } from './components/PfpSection';
 import { ThxSection } from './components/ThxSection/ThxSection';
+import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
+
 
 export const App = () => {
   const onClick = () => {
@@ -44,7 +41,7 @@ export const App = () => {
 
   return (
     <div id="app">
-      <Header />
+      <Header shareButton={false}/>
       <section id="welcome">
         <div className="welcome-container">
           <div className="welcome-content">
@@ -85,36 +82,7 @@ export const App = () => {
           />
         </div>
       </section>
-
-      <section id="geonodes">
-        <img src={nftGraphic} />
-        <motion.div className="geonodes-content" whileInView="hover">
-          <div className="geonodes-logo-container">
-            <img src={logoLarge} className="geonodes-logo" />
-          </div>
-          <motion.div
-            className="geonodes-title"
-            whileInView="hover"
-            // viewport={{ once: true }}
-            style={{
-              bottom: -200,
-              // opacity: 0,
-              // position: 'absolute',
-            }}
-            transition={{
-              duration: 0.6,
-              // delay: 0.7,
-            }}
-            variants={{
-              hover: {
-                bottom: -270,
-              },
-            }}
-          >
-            <motion.img src={geonodeGraphic} className="geonodes-graphic" />
-          </motion.div>
-        </motion.div>
-      </section>
+      <GeonodesSection/>
       <PfpSection />
       <ThxSection odd />
       <div className="early-access-modal hidden" onClick={closeModal}>

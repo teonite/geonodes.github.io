@@ -1,0 +1,57 @@
+@use '@scssutils' as *;
+
+#geonodes {
+    position: relative;
+    padding-bottom: 5rem;
+    width: 100vw;
+  
+    & > img {
+      max-width: 140%;
+      min-width: 100%;
+      margin-left: -20%;
+  
+      @include media-breakpoint-up(xl) {
+        max-width: 100%;
+        margin-left: 0;
+      }
+    }
+  
+    & > .geonodes-content {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+  
+      @include media-breakpoint-up(xl) {
+        margin-top: 20px;
+      }
+  
+      & > div > .geonodes-logo {
+        max-width: 182.94px;
+  
+        @include media-breakpoint-up(xl) {
+          max-width: unset;
+        }
+      }
+  
+      & > .geonodes-title {
+        @include media-breakpoint-up(xl) {
+          position: absolute;
+          bottom: -260px;
+        }
+  
+        & > .geonodes-graphic {
+          max-width: 238.33px;
+  
+          @include media-breakpoint-up(xl) {
+            max-width: unset;
+          }
+        }
+      }
+    }
+  }

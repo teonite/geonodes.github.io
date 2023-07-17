@@ -22,3 +22,37 @@
     border-color: #00eecc;
   }
 }
+
+
+.share-button-container {
+  display: flex;
+  justify-content: center;
+
+  @include media-breakpoint-up(xl) {
+    justify-content: unset;
+  }
+}
+
+.share-button {
+  border: 6px solid black;
+  border-radius: 0;
+  height: 20px;
+  padding: 6px 10px 12px;
+  text-transform: lowercase;
+  background-color: #fff;
+  color: black;
+  font-family: Borna;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: normal;
+  
+  &:hover {
+    border-color: var(--accent);
+    cursor: pointer;
+  }
+}
+
+#shareIcon{
+  margin-left: 10px;
+}
