@@ -21,6 +21,10 @@
   &:hover {
     border-color: #00eecc;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 
@@ -56,3 +60,40 @@
 #shareIcon{
   margin-left: 10px;
 }
+
+.back-button-container {
+  display: flex;
+  justify-content: center;
+
+  @include media-breakpoint-up(xl) {
+    justify-content: unset;
+  }
+}
+
+.back-button {
+  padding: 4px 0;
+  margin: 4rem 0;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: lowercase;
+  color: black;
+  border: none;
+  &:hover {
+    color: #00eecc;
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  & > .back-arrow{
+    fill: yellow;
+  }
+}
+
+.back-button:hover .back-arrow path {
+  fill: var(--accent); /* Set the desired fill color when .back-button is hovered */
+}
+

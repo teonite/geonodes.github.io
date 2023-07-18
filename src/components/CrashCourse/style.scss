@@ -1,0 +1,67 @@
+@use '@scssutils' as *;
+
+#welcome {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-family: 'Borna';
+  padding-bottom: 5rem;
+
+  @include media-breakpoint-up(xl) {
+    padding-left: 12rem;
+    padding-right: 12rem;
+  }
+
+  & > .welcome-container {
+    & > .welcome-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      & > p {
+        font-style: italic;
+        font-size: 24px;
+        margin: 0;
+      }
+      
+      & > h3 {
+        font-size: 55px;
+        font-weight: bold;
+        line-height: 94%;
+        margin: 0;
+
+        @include media-breakpoint-up(md) {
+          font-size: 64px;
+        }
+
+        @include media-breakpoint-up(xxl) {
+          font-size: 112px;
+        }
+      }
+      & > .wallets-container {
+        display: flex;
+        padding-block: 2rem;
+        flex-wrap: wrap;
+        gap: 5%;
+        & > .wallet{
+            font-size: 24px;
+            font-style: italic;
+            & > .action-button {
+                width: 28rem;
+                height: 6rem;
+                font-weight: bold;
+                font-size: 48px;
+            }
+        }
+      }
+    }
+  }
+}
+
+.bold {
+  font-weight: bold;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+}

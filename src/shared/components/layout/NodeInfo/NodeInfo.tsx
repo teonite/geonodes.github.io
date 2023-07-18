@@ -23,7 +23,7 @@ export const NodeInfo = ({ selected }: NodeInfoProps) => {
           <br />
           {thxNode.attributes.accentColor}
         </p>
-        {/*
+        {/*         
   
         <ExternalLink
           url="https://opensea.io/collection/teonite-geonodes"

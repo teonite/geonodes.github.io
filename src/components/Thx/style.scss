@@ -15,8 +15,8 @@
     display: grid;
     gap: 20px;
     grid-template-areas:
-      'video'
-      'content';
+      'content'
+      'video';
 
     @include media-breakpoint-up(xl) {
       gap: 70px;
@@ -168,4 +168,9 @@
     font-weight: normal;
     line-height: 28.8px;
   }
+}
+
+a{
+  color: inherit;
+  text-decoration: underline;
 }

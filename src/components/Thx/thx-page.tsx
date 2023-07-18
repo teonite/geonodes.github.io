@@ -1,46 +1,12 @@
 import { Header } from '../../shared/components/layout/Header/Header';
-import { NodeInfo } from '../../shared/components/layout/NodeInfo/NodeInfo';
 import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
-import ReactPlayer from 'react-player';
-import {ChangeEvent, useState} from 'react';
-import {thxNodes} from  '../../constants'
+import {ChangeEvent, MouseEventHandler, useState} from 'react';
 import {WalletInputArrow} from '../../components/icons/WalletInputArrow'
 import { Footer } from '../../shared/components/layout/Footer/Footer';
+import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
+import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNodePanel'
 
 import './style.scss';
-
-  
-const findThxById = (id: number) => {
-    if( thxNodes[id-1]?.id == id) return thxNodes[id - 1] // most of the time this will be id
-    for(let i = 0; i < thxNodes.length; i++){ // iterating all nodes for other cases
-        if(thxNodes[i].id === id) return thxNodes[i];
-    }
-    return thxNodes[0] // eventually return just the first node.
-}
-
-interface nodeProps{
-    id: number
-}
-
-const ThxNodePanel = (props: nodeProps) =>{
-    const {id} = props;
-    let thxNode = findThxById(id);
-    return (
-            <section id="thx-nodes">
-                <ReactPlayer
-                    id="geo-head"
-                    url={thxNode.video.video}
-                    playing={true}
-                    loop
-                    muted
-                    controls={false}
-                    width="100%"
-                    height="auto"
-                />
-                <NodeInfo selected={thxNode.id - 1} />
-            </section>
-    )
-}
 
 interface ThxPageClient {
     name: string;
@@ -58,6 +24,22 @@ export const ThxPage = (client: ThxPageClient) => {
         console.log(address)
         // *ToDOhandle submitting address
     };
+
+    const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
+        const modal = document.querySelector('.share-modal');
+        if (!modal) return;
+    
+        const target = event.target;
+    
+        if (target instanceof HTMLElement) {
+          if (
+            !target.classList.contains('hidden') &&
+            target.classList.contains('share-modal')
+          ) {
+            target.classList.add('hidden');
+          }
+        }
+    };    
 
     const NODE_ID = client.nodeId
     const CLIENT_NAME = client.name
@@ -88,13 +70,13 @@ export const ThxPage = (client: ThxPageClient) => {
                                 </div>
                             </div> 
                         </div>
-                        <p>If you're new to Web3, please visit our crash course.</p>
+                        <p>If you're new to Web3, please visit our <a href="<--crash course link-->">crash course</a>.</p>
                         <p>
                             If you have any questions or need assistance, please contact 
-                            Mike at mike@teonite.com
+                            Mike at <a href="<--mail link-->">mike@teonite.com </a>
                         </p>
                     </div>
-                    <ThxNodePanel id={NODE_ID}/>
+                    <ThxNodePanel id={NODE_ID} showInfo={true}/>
                 </div>
             </section>
             <GeonodesSection/>
@@ -121,6 +103,11 @@ export const ThxPage = (client: ThxPageClient) => {
                     tokens onto the blockchain through our smart contracts.
                 </p>
             </section>
+            <div className="share-modal hidden" onClick={closeModal}>
+                <div className="share-modal-content">
+                    <ShareModal />
+                </div>
+            </div>
             <Footer/>
         </div>
     )

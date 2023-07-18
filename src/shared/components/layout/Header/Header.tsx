@@ -48,8 +48,20 @@ export const Header = (config: headerConfig) =>{
 
 
 const ShareButton = () => {
+
+  const onClick = () => {
+    const modal = document.querySelector('.share-modal ');
+    if (!modal) return;
+    if (modal.classList.contains('hidden')) {
+      modal.classList.remove('hidden');
+      console.log('jl')
+    } else {
+      modal.classList.add('hidden');
+    }
+  };
+
   return(
-    <div className='share-button-container'>
+    <div className='share-button-container' onClick={onClick}>
       <div className='share-button'>
         share
         <ShareIcon />
