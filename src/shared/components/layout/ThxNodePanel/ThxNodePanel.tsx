@@ -23,7 +23,7 @@ export const ThxNodePanel = (props: nodeProps) =>{
     let thxNode = findThxById(id);
     const info = showInfo ?  <NodeInfo selected={thxNode.id - 1} /> : null
     return (
-            <section id="thx-nodes">
+            <section id="thx-nodes-panel">
                 <ReactPlayer
                     id="geo-head"
                     url={thxNode.video.video}

@@ -52,9 +52,10 @@ const ShareButton = () => {
   const onClick = () => {
     const modal = document.querySelector('.share-modal ');
     if (!modal) return;
+    console.log('jl')
+
     if (modal.classList.contains('hidden')) {
       modal.classList.remove('hidden');
-      console.log('jl')
     } else {
       modal.classList.add('hidden');
     }

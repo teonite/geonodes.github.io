@@ -1,4 +1,3 @@
-import './style.scss';
 
 import { MouseEventHandler } from 'react';
 import ReactPlayer from 'react-player';
@@ -9,6 +8,7 @@ import { Header } from '../../shared/components/layout/Header/Header';
 import { PfpSection } from './components/PfpSection';
 import { ThxSection } from './components/ThxSection/ThxSection';
 import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
+import './style.scss';
 
 
 export const App = () => {

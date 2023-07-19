@@ -5,7 +5,7 @@ import {WalletInputArrow} from '../../components/icons/WalletInputArrow'
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
 import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNodePanel'
-
+import { Link } from "react-router-dom";
 import './style.scss';
 
 interface ThxPageClient {
@@ -22,7 +22,7 @@ export const ThxPage = (client: ThxPageClient) => {
     const submitHandler = (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
         console.log(address)
-        // *ToDOhandle submitting address
+        // *ToDo handle submitting address
     };
 
     const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
@@ -70,7 +70,7 @@ export const ThxPage = (client: ThxPageClient) => {
                                 </div>
                             </div> 
                         </div>
-                        <p>If you're new to Web3, please visit our <a href="<--crash course link-->">crash course</a>.</p>
+                        <p>If you're new to Web3, please visit our <Link to="/crashcourse">crash course</Link>.</p>
                         <p>
                             If you have any questions or need assistance, please contact 
                             Mike at <a href="<--mail link-->">mike@teonite.com </a>

@@ -108,7 +108,7 @@ export const thxNodes: ThxNode[] = [
       video: 'videos/thx-0004/master.m3u8',
       poster: poster_thx0004,
     },
-  },
+  }
 ];
 
 export const Colors = {

@@ -1,6 +1,6 @@
 @use '@scssutils' as *;
 
-#welcome {
+#welcome-collection {
   padding-left: 2rem;
   padding-right: 2rem;
   font-family: 'Borna';
@@ -79,13 +79,16 @@ a {
       grid-column: 1;
       @include media-breakpoint-up(xxl){
         display: grid;
-        grid-template-rows: 70 30%;
+        grid-template-rows: 80% 20%;
       }
 
       & > .top-panel{
         grid-column: 1;
-        display: grid;
-        grid-template-columns: 70% 30%;
+        width: 100%;
+        @include media-breakpoint-up(xxl){
+          display: grid;
+          grid-template-columns: 65% 35%;
+        }
 
 
         & > .arrows-panel{
@@ -106,7 +109,7 @@ a {
             & > #bottom-arrow{
               grid-row: 2;
               & > .text {
-                margin-left: 70px;
+                margin-left: 60px;
               }
             }
           }
@@ -179,19 +182,27 @@ a {
     padding-right: 12rem;
   }
 
-  & > .nodes-carousel{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 3rem;
-    grid-column-gap: 3rem;
-
-    @include media-breakpoint-up(md) {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    @include media-breakpoint-up(xxl) {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-
+  & > .nodes-carousel-pilot{
+    margin-top: 3rem;
+    height: 3rem;
+    display:flex;
+    background-color: black;
+    border-radius: 22px;
   }
+}
+
+.nodes-carousel{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 3rem;
+  grid-column-gap: 3rem;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include media-breakpoint-up(xxl) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
 }

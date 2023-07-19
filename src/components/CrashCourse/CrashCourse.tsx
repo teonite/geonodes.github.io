@@ -1,14 +1,32 @@
 import { Header } from '../../shared/components/layout/Header/Header';
 import { Footer } from '../../shared/components/layout/Footer/Footer';
+import {MouseEventHandler} from 'react';
 import {BackArrow} from '../../components/icons/BackArrow'
+import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
+import { Link } from "react-router-dom";
+
 import './style.scss';
 
 export const CrashCourse = () => {
-
+    const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
+        const modal = document.querySelector('.share-modal');
+        if (!modal) return;
+    
+        const target = event.target;
+    
+        if (target instanceof HTMLElement) {
+          if (
+            !target.classList.contains('hidden') &&
+            target.classList.contains('share-modal')
+          ) {
+            target.classList.add('hidden');
+          }
+        }
+    }; 
     return (
         <div>
             <Header shareButton={true}/> 
-            <section id="welcome">
+            <section id="welcome-course">
                 <div className="welcome-container">
                     <div className="welcome-content">
                         <h3>web3 crash course</h3>
@@ -48,9 +66,14 @@ export const CrashCourse = () => {
                     </div>
                 </div>
                 <div className="back-button-container">
-                    <button className="back-button"> <BackArrow /> back to NFT</button>
+                    <Link to='/hash'><button className="back-button"> <BackArrow /> back to NFT</button></Link>
                 </div>
             </section>
+            <div className="share-modal hidden" onClick={closeModal}>
+                <div className="share-modal-content">
+                    <ShareModal />
+                </div>
+            </div>
             <Footer />
         </div>
     )

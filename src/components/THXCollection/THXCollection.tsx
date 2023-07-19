@@ -8,8 +8,9 @@ import physicalArtImg from '../../assets/images/thx-node-physical.png'
 import {Arrow1, Arrow2, Arrow3} from '../../components/icons/Arrows'
 import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
 import { NodesCarousel } from './NodesCarousel';
-
+import { SideNavigation } from '../../shared/components/layout/SideNavigation/SideNavigation';
 import './style.scss'
+
 
 export const THXCollection = () => {
     const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
@@ -30,7 +31,7 @@ export const THXCollection = () => {
     return (
         <div>
             <Header shareButton={true}/> 
-            <section id="welcome">
+            <section id="welcome-collection">
                 <div className="welcome-container">
                     <div className="welcome-content">
                         <h3>T.H.X. collection</h3>
@@ -97,6 +98,7 @@ export const THXCollection = () => {
                 </div>
             </div>
             <Footer />
+            <SideNavigation sections={['welcome-collection', 'geonodes']} />
         </div>
     )
 } 
