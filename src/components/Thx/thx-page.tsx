@@ -6,6 +6,9 @@ import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
 import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNodePanel'
 import { Link } from "react-router-dom";
+import { abi } from "../../../contract-cache.json" 
+import { useContractRead, useContract, SmartContract  } from "@thirdweb-dev/react";
+
 import './style.scss';
 
 interface ThxPageClient {
@@ -14,6 +17,9 @@ interface ThxPageClient {
 }
 
 export const ThxPage = (client: ThxPageClient) => {
+  const { contract } = useContract("0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4", abi);
+
+
     const [address, setAddress] = useState('');
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setAddress(event.currentTarget.value);
@@ -76,7 +82,7 @@ export const ThxPage = (client: ThxPageClient) => {
                             Mike at <a href="<--mail link-->">mike@teonite.com </a>
                         </p>
                     </div>
-                    <ThxNodePanel id={NODE_ID} showInfo={true}/>
+                    <ThxNodePanel nodeId={NODE_ID} showInfo={true} playOnHover={false} contract={contract}/>
                 </div>
             </section>
             <GeonodesSection/>

@@ -9,6 +9,7 @@ import { PfpSection } from './components/PfpSection';
 import { ThxSection } from './components/ThxSection/ThxSection';
 import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
 import './style.scss';
+import { Link } from "react-router-dom";
 
 
 export const App = () => {
@@ -42,6 +43,12 @@ export const App = () => {
   return (
     <div id="app">
       <Header shareButton={false}/>
+      
+      {/** these two buttons are aonly for debugging */}
+      <Link to="/hash"><button className="action-button" style={{margin: "0 0 2rem 12rem"}}>DEBUG: thx-page</button></Link>
+      <Link to="/collection"><button className="action-button" style={{margin: "0 0 2rem 3rem"}}>DEBUG: collection</button></Link>
+      {/* */}
+
       <section id="welcome">
         <div className="welcome-container">
           <div className="welcome-content">

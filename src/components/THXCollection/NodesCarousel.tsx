@@ -1,44 +1,38 @@
-import {thxNodes} from '../../constants'
 import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNodePanel'
 import { Carousel } from 'react-responsive-carousel';
 import { CarouselIndicators } from '../../shared/components/layout/CarouselIndicators/CarouselIndicators';
 import { useState } from 'react';
+import { useContract } from "@thirdweb-dev/react";
+import { abi } from "../../../contract-cache.json" 
 
 import './style.scss'
 import { JSX } from 'react/jsx-runtime';
 
-
-/**
- *  @toDo make an Item Carousel to browse thx-nodes. 
- *  xxl - 2 rows, 3 columns
- *  mobile - 2 column, 3 rows 
- */
-
-
 export const NodesCarousel = () => {
-  
+  const { contract } = useContract("0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4", abi);
+
     const itemsPerPage = 6
-    const pagesNumber = Math.ceil(thxNodes.length / itemsPerPage);
     const [selected, setSelected] = useState(0);
-
     let pages: JSX.Element[] = [];
-    
-
-    for (let i = 0; i < pagesNumber; i++) {
-        const startIndex = i * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const pageItems = thxNodes.slice(startIndex, endIndex);
-    
-        const carouselPageItems = pageItems.map((node) => (
-          <ThxNodePanel key={node.id} id={node.id} showInfo={true} />
-        ));
-    
-        pages.push(
-          <div key={i} className="nodes-carousel">
-            {carouselPageItems}
-          </div>
-        );
-      }
+    const pagesNumber = 3 /* to dynamically calculate the number of pages, it would be better to have a smart contract function totalSupply() */
+    let currentPage = 0;
+    while(true) {
+      const startIndex = currentPage * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      let crntId = 1
+      const pageItems = Array.from({ length: itemsPerPage }, (_, index) => startIndex + index);
+      const carouselPageItems = pageItems.map((index) => (
+        <ThxNodePanel key={index} nodeId={(currentPage*6) + crntId++} showInfo={true} playOnHover={true} contract={contract}/>
+      ));
+  
+      pages.push(
+        <div key={currentPage} className="nodes-carousel">
+          {carouselPageItems}
+        </div>
+      );
+      currentPage++
+      if(currentPage > pagesNumber) break;
+    }
     
     return (
         <div className="nodes-carousel-container">

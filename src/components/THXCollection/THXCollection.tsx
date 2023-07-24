@@ -2,21 +2,21 @@ import { Header } from '../../shared/components/layout/Header/Header';
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
 import {MouseEventHandler} from 'react';
-import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNodePanel'
 import { NodeInfo } from '../../shared/components/layout/NodeInfo/NodeInfo';
 import physicalArtImg from '../../assets/images/thx-node-physical.png'
 import {Arrow1, Arrow2, Arrow3} from '../../components/icons/Arrows'
 import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
 import { NodesCarousel } from './NodesCarousel';
 import { SideNavigation } from '../../shared/components/layout/SideNavigation/SideNavigation';
-import './style.scss'
+import ReactPlayer from 'react-player';
+
+import './style.scss';
 
 
 export const THXCollection = () => {
     const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
         const modal = document.querySelector('.share-modal');
         if (!modal) return;
-    
         const target = event.target;
     
         if (target instanceof HTMLElement) {
@@ -29,7 +29,7 @@ export const THXCollection = () => {
         }
     }; 
     return (
-        <div>
+            <div>
             <Header shareButton={true}/> 
             <section id="welcome-collection">
                 <div className="welcome-container">
@@ -61,7 +61,19 @@ export const THXCollection = () => {
                     <div className="art-showcase-container">
                         <div className="left-panel">
                             <div className="top-panel">
-                                <div className="nft"><ThxNodePanel id={1} showInfo={false}/></div>
+                                <div className="nft">
+                                    <ReactPlayer
+                                        id="geo-head"
+                                        url={'videos/thx-0001/master.m3u8'}
+                                        playing={true}
+                                        loop
+                                        muted
+                                        width='100%'
+                                        height='auto'
+                                        controls={false}
+                                        light={false}
+                                    />
+                                </div>
                                 <div className="arrows-panel">
                                     <div id="top-arrow">
                                         <div className='text'>physical</div>
@@ -99,6 +111,6 @@ export const THXCollection = () => {
             </div>
             <Footer />
             <SideNavigation sections={['welcome-collection', 'geonodes']} />
-        </div>
+            </div>
     )
 } 

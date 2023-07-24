@@ -19,4 +19,5 @@ export default defineConfig({
       '@scssutils': path.resolve(__dirname, '/src/shared/scss/utils'),
     },
   },
+  define: {'process.env': process.env}
 });
