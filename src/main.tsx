@@ -7,10 +7,10 @@ import { THXCollection } from './components/THXCollection/THXCollection';
 import { ThxPage } from './components/Thx/thx-page';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThirdwebProvider } from "@thirdweb-dev/react";
-
+import { NETWORK } from '../nft-config.json'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <ThirdwebProvider activeChain="ethereum" clientId="65f2bd5bacbe75f9ea10b08db6a49aa0">
+  <ThirdwebProvider activeChain={NETWORK}>
     <Router>
       <Routes>
         <Route path="/" element={<App />}/>
@@ -21,13 +21,3 @@ createRoot(document.getElementById('root') as HTMLElement).render(
     </Router>
   </ThirdwebProvider>
 );
-
-
-/**
- * @todo routing on hash
- * 
- * @backend /data returns all links and name with tokenId
- * /links returns only links
- * 
- * params.link after dynamic routingg will match with link at /data and display proper compnonents
- */
