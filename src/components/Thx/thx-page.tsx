@@ -10,6 +10,7 @@ import { abi } from "../../../contract-cache.json"
 import { useContract } from "@thirdweb-dev/react";
 import { server, routes }   from "../../../backend-config.json"
 import { CONTRACT_ADDRESS } from "../../../nft-config.json"
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import './style.scss';
 
 
@@ -43,12 +44,7 @@ export const ThxPage = () => {
 
 
     const { contract } = useContract(CONTRACT_ADDRESS, abi);
-
-
-    const [address, setAddress] = useState('');
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setAddress(event.currentTarget.value);
-      };
+    const address = useAddress();
 
     const submitHandler = (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
@@ -97,7 +93,7 @@ export const ThxPage = () => {
                         </p>
                         <div>
                             <div className='wallet-input-container'>
-                                <input placeholder="pass your wallet address here" type="text" onChange={handleChange}/>
+                                { !address ? <ConnectWallet className="connectButton" /> : <div className="connectButton-connected"> {address} </div>}
                                 <div className='submit' onClick={submitHandler}>
                                     <WalletInputArrow textColor={"#FFFF"}/>
                                 </div>

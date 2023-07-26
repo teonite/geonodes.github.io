@@ -96,35 +96,30 @@
   letter-spacing: 2.74px;
   font-style: normal; 
   text-transform: uppercase;
-
-  & > input {
-    text-align: center;
+  
+  & > .connectButton {
     color: black;
-    font-family: 'Borna';
-    font-size: 28px;
+    font-size: 24px;
     letter-spacing: 2.74px;
-    font-style: normal; 
     text-transform: uppercase;
+    margin: auto;
+    background-color: transparent;
     width: 100%;
-    height: 120%;
-    border:none; 
-    background: transparent; 
-    outline: 0;
-  }
+    height: 100%;
+    
+    &-connected{
+      font-size: 24px;
+      letter-spacing: 2.04px;
+      width: 100%;
+    }
 
-  & > input::placeholder {
-    text-align: center;
-    color: black;
-    font-family: 'Borna';
-    font-size: 18px;
-    letter-spacing: 2.74px;
-    font-style: normal; 
-    text-transform: uppercase;
+    &:hover {
+      color: var(--accent);
+    }
   }
 
   & > .submit {
     display: flex;
-    align-items: center;
   }
   
 }
