@@ -1,23 +1,45 @@
 import { Header } from '../../shared/components/layout/Header/Header';
 import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
-import {ChangeEvent, MouseEventHandler, useState} from 'react';
+import {ChangeEvent, MouseEventHandler, useState, useEffect} from 'react';
 import {WalletInputArrow} from '../../components/icons/WalletInputArrow'
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
 import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNodePanel'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { abi } from "../../../contract-cache.json" 
-import { useContractRead, useContract, SmartContract  } from "@thirdweb-dev/react";
-
+import { useContract } from "@thirdweb-dev/react";
+import { server, routes }   from "../../../backend-config.json"
 import './style.scss';
 
-interface ThxPageClient {
+
+interface ClientPageInfo {
+    hash: string;
     name: string;
-    nodeId: number;
+    token_id: number;
 }
 
-export const ThxPage = (client: ThxPageClient) => {
-  const { contract } = useContract("0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4", abi);
+export const ThxPage = () => {
+    // const params = useParams()
+    // const {hash} = params 
+    // const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
+    // useEffect(() => {
+    //     fetch(`${server}${routes.link_validation}`, {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({ hash }),
+    //     })
+    //       .then((res) => res.json())
+    //       .then((data) => setValidatedInfo(data))
+    //       .catch((error) => {
+    //         console.error('Error fetching data:', error);
+    //         setValidatedInfo(false);
+    //       });
+    //   }, [hash]);
+
+
+    const { contract } = useContract("0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4", abi);
 
 
     const [address, setAddress] = useState('');
@@ -45,17 +67,19 @@ export const ThxPage = (client: ThxPageClient) => {
             target.classList.add('hidden');
           }
         }
-    };    
+    };
 
-    const NODE_ID = client.nodeId
-    const CLIENT_NAME = client.name
+    // if(typeof validatedInfo == 'boolean' || validatedInfo == undefined) {
+    //     return (<> No Access </>)
+    // }
+
     return (
         <div>
             <Header shareButton={true}/> 
             <section id="welcome">
                 <div className="welcome-container">
                     <div className="welcome-content">
-                        <h3>thank you {CLIENT_NAME} <span style={{color: '#00EECC'}}>!</span>{' '}</h3>
+                        <h3>thank you {"Berndt"} <span style={{color: '#00EECC'}}>!</span>{' '}</h3>
                         <p>
                             Your trust and partnership have been instrumental in our 
                             success. As a token of our appreciation, we have prepared 
@@ -82,7 +106,7 @@ export const ThxPage = (client: ThxPageClient) => {
                             Mike at <a href="<--mail link-->">mike@teonite.com </a>
                         </p>
                     </div>
-                    <ThxNodePanel nodeId={NODE_ID} showInfo={true} playOnHover={false} contract={contract}/>
+                    <ThxNodePanel nodeId={3} showInfo={true} playOnHover={false} contract={contract}/>
                 </div>
             </section>
             <GeonodesSection/>

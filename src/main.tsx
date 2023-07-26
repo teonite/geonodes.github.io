@@ -16,8 +16,18 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/" element={<App />}/>
         <Route path="/crashcourse" element={<CrashCourse />}/>
         <Route path="/collection" element={<THXCollection />}/>
-        <Route path="/hash" element={<ThxPage name={'Berndt'} nodeId={3}/>}/>
+        <Route path="/thx/:hash" element={<ThxPage />}/>
       </Routes>
     </Router>
   </ThirdwebProvider>
 );
+
+
+/**
+ * @todo routing on hash
+ * 
+ * @backend /data returns all links and name with tokenId
+ * /links returns only links
+ * 
+ * params.link after dynamic routingg will match with link at /data and display proper compnonents
+ */
