@@ -4,12 +4,12 @@ import { CarouselIndicators } from '../../shared/components/layout/CarouselIndic
 import { useState } from 'react';
 import { useContract } from "@thirdweb-dev/react";
 import { abi } from "../../../contract-cache.json" 
-
+import { CONTRACT_ADDRESS } from "../../../nft-config.json"
 import './style.scss'
 import { JSX } from 'react/jsx-runtime';
 
 export const NodesCarousel = () => {
-  const { contract } = useContract("0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4", abi);
+  const { contract } = useContract(CONTRACT_ADDRESS, abi);
 
     const itemsPerPage = 6
     const [selected, setSelected] = useState(0);

@@ -9,6 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import { abi } from "../../../contract-cache.json" 
 import { useContract } from "@thirdweb-dev/react";
 import { server, routes }   from "../../../backend-config.json"
+import { CONTRACT_ADDRESS } from "../../../nft-config.json"
 import './style.scss';
 
 
@@ -19,27 +20,29 @@ interface ClientPageInfo {
 }
 
 export const ThxPage = () => {
-    // const params = useParams()
-    // const {hash} = params 
-    // const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
-    // useEffect(() => {
-    //     fetch(`${server}${routes.link_validation}`, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({ hash }),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => setValidatedInfo(data))
-    //       .catch((error) => {
-    //         console.error('Error fetching data:', error);
-    //         setValidatedInfo(false);
-    //       });
-    //   }, [hash]);
+    
+    /** Sending url to backend to validate */
+    const params = useParams()
+    const {hash} = params 
+    const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
+    useEffect(() => {
+        fetch(`${server}${routes.link_validation}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ hash }),
+        })
+          .then((res) => res.json())
+          .then((data) => setValidatedInfo(data))
+          .catch((error) => {
+            console.error('Error fetching data:', error);
+            setValidatedInfo(false);
+          });
+      }, [hash]);
 
 
-    const { contract } = useContract("0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4", abi);
+    const { contract } = useContract(CONTRACT_ADDRESS, abi);
 
 
     const [address, setAddress] = useState('');
@@ -69,9 +72,9 @@ export const ThxPage = () => {
         }
     };
 
-    // if(typeof validatedInfo == 'boolean' || validatedInfo == undefined) {
-    //     return (<> No Access </>)
-    // }
+    if(typeof validatedInfo == 'boolean' || validatedInfo == undefined) {
+        return (<> No Access </>)
+    }
 
     return (
         <div>
@@ -79,7 +82,7 @@ export const ThxPage = () => {
             <section id="welcome">
                 <div className="welcome-container">
                     <div className="welcome-content">
-                        <h3>thank you {"Berndt"} <span style={{color: '#00EECC'}}>!</span>{' '}</h3>
+                        <h3>thank you {validatedInfo.name} <span style={{color: '#00EECC'}}>!</span>{' '}</h3>
                         <p>
                             Your trust and partnership have been instrumental in our 
                             success. As a token of our appreciation, we have prepared 
@@ -106,7 +109,7 @@ export const ThxPage = () => {
                             Mike at <a href="<--mail link-->">mike@teonite.com </a>
                         </p>
                     </div>
-                    <ThxNodePanel nodeId={3} showInfo={true} playOnHover={false} contract={contract}/>
+                    <ThxNodePanel nodeId={validatedInfo.token_id} showInfo={true} playOnHover={false} contract={contract}/>
                 </div>
             </section>
             <GeonodesSection/>

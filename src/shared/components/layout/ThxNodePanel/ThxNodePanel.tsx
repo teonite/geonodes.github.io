@@ -1,6 +1,6 @@
 import ReactPlayer from 'react-player';
 import { useState, useEffect } from 'react'
-import { useContractRead, useContract, SmartContract  } from "@thirdweb-dev/react";
+import { useContractRead, SmartContract  } from "@thirdweb-dev/react";
 import config from '../../../../../nft-config.json';
 import './style.scss'
 interface nodeProps{
