@@ -24,7 +24,7 @@ export const ThxPage = () => {
     
     /** Sending url to backend to validate */
     const params = useParams()
-    const {hash} = params 
+    let {hash} = params 
     const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
     useEffect(() => {
         fetch(`${server}${routes.link_validation}`, {
@@ -41,15 +41,44 @@ export const ThxPage = () => {
             setValidatedInfo(false);
           });
       }, [hash]);
-
-
+    
     const { contract } = useContract(CONTRACT_ADDRESS, abi);
     const address = useAddress();
+    // useEffect(() => {
+    //     fetch(`${server}${routes.mint}`, {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({ address, hash }),
+    //     })
+    //       .then((res) => res.json())
+    //       .catch((error) => {console.error('Error fetching data:', error);});
+    //   }, [address, hash]);
 
-    const submitHandler = (event: React.MouseEvent<HTMLDivElement>) => {
+
+    const submitHandler = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
-        console.log(address)
-        // *ToDo handle submitting address
+        try {
+            const response = await fetch(`${server}${routes.mint}`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ address, hash }),
+            });
+        
+            if (!response.ok) {
+              // If the response status is not in the 2xx range, it's considered an error
+              throw new Error('Request failed with status ' + response.status);
+            }
+        
+            const data = await response.json();
+            // Do something with the response data, if needed
+            console.log(data);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
     };
 
     const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
