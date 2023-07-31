@@ -1,0 +1,39 @@
+@use '@scssutils' as *;
+
+.share-modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+  }
+  
+  .share-modal-content {
+    border: 10px solid black;
+    border-radius: 0;
+    background-color: #fff;
+  
+    @include media-breakpoint-up(xl) {
+      width: 400px;
+      min-height: 400px;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+  
+  .share-container {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    height: 35vh;
+  }
+  

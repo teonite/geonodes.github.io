@@ -1,0 +1,30 @@
+@use '@scssutils' as *;
+
+.info {
+    grid-area: info;
+    & > h4 {
+      @include typography(paragraph-bold);
+      margin: 0;
+      padding: 0;
+    }
+    & > span {
+      @include typography(subtext);
+      margin: 0;
+      padding: 0;
+    }
+    & > p {
+      @include typography(paragraph);
+      margin: 0;
+      padding: 0;
+    }
+
+    & > .external-link {
+      margin-top: 32px;
+      justify-content: center;
+
+      @include media-breakpoint-up(xl) {
+        margin-top: 30px;
+        justify-content: flex-start;
+      }
+    }
+}

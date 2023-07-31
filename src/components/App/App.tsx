@@ -1,19 +1,16 @@
-import './style.scss';
 
-import { motion } from 'framer-motion';
-import { animate } from 'motion';
-import { MouseEventHandler, useEffect } from 'react';
+import { MouseEventHandler } from 'react';
 import ReactPlayer from 'react-player';
-
-import geonodeGraphic from '../../assets/images/geonodes.svg';
-import logo from '../../assets/images/logo.svg';
-import logoLarge from '../../assets/images/logo-large.svg';
-import nftGraphic from '../../assets/images/NFT.svg';
 import { EarlyAccessForm } from '../../shared/components/layout/EarlyAccessForm';
 import { Footer } from '../../shared/components/layout/Footer/Footer';
 import { SideNavigation } from '../../shared/components/layout/SideNavigation/SideNavigation';
+import { Header } from '../../shared/components/layout/Header/Header';
 import { PfpSection } from './components/PfpSection';
 import { ThxSection } from './components/ThxSection/ThxSection';
+import { GeonodesSection } from '../../shared/components/layout/GeonodesSection/GeonodesSection';
+import './style.scss';
+import { Link } from "react-router-dom";
+
 
 export const App = () => {
   const onClick = () => {
@@ -42,34 +39,15 @@ export const App = () => {
     }
   };
 
-  useEffect(() => {
-    document.querySelector('.geonodes-logo')?.addEventListener('mouseenter', () => {
-      animate('.geonodes-logo-graphic', { x: 130 }, { duration: 0.5 });
-    });
-
-    document.querySelector('.geonodes-logo')?.addEventListener('mouseleave', () => {
-      animate('.geonodes-logo-graphic', { x: 0 }, { duration: 0.5 });
-    });
-  }, []);
 
   return (
     <div id="app">
-      <motion.div id="header" whileHover="hover">
-        <img
-          src={logo}
-          alt="geonodes.xyz logo"
-          className="geonodes-logo"
-          style={{ backgroundColor: 'white', zIndex: 100 }}
-        />
-        <motion.img
-          style={{
-            marginLeft: -120,
-          }}
-          variants={{}}
-          src={geonodeGraphic}
-          className="geonodes-logo-graphic"
-        />
-      </motion.div>
+      <Header shareButton={false}/>
+      
+      {/** these two buttons are aonly for debugging */}
+      <Link to="/thx/6e06da3d22222acb700a68cb656b616eac8de673a4fd3241e56a8b9ebb259c12"><button className="action-button" style={{margin: "0 0 2rem 12rem"}}>DEBUG: thx-page</button></Link>
+      <Link to="/collection"><button className="action-button" style={{margin: "0 0 2rem 3rem"}}>DEBUG: collection</button></Link>
+      {/* */}
 
       <section id="welcome">
         <div className="welcome-container">
@@ -111,36 +89,7 @@ export const App = () => {
           />
         </div>
       </section>
-
-      <section id="geonodes">
-        <img src={nftGraphic} />
-        <motion.div className="geonodes-content" whileInView="hover">
-          <div className="geonodes-logo-container">
-            <img src={logoLarge} className="geonodes-logo" />
-          </div>
-          <motion.div
-            className="geonodes-title"
-            whileInView="hover"
-            // viewport={{ once: true }}
-            style={{
-              bottom: -200,
-              // opacity: 0,
-              // position: 'absolute',
-            }}
-            transition={{
-              duration: 0.6,
-              // delay: 0.7,
-            }}
-            variants={{
-              hover: {
-                bottom: -270,
-              },
-            }}
-          >
-            <motion.img src={geonodeGraphic} className="geonodes-graphic" />
-          </motion.div>
-        </motion.div>
-      </section>
+      <GeonodesSection/>
       <PfpSection />
       <ThxSection odd />
       <div className="early-access-modal hidden" onClick={closeModal}>

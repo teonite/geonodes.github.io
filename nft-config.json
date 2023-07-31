@@ -1,0 +1,23 @@
+{
+    "NETWORK": "ethereum",
+    "CONTRACT_ADDRESS": "0xa8305B76571f97656d3b2896bB5cde8A2FF61AC4",
+    "NAME": "name",
+    "IMAGE": "image",
+    "ANIMATION": "animation_url",
+    "ATTRRIBUTES": "attributes",
+    "ATTRIBUTE_1": {
+        "ATTRIBUTE_NAME": "Ambient",
+        "ATTRIBUTE_TYPE": "string"
+    },
+    "ATTRIBUTE_2": {
+        "ATTRIBUTE_NAME": "Shape",
+        "ATTRIBUTE_TYPE": "number"
+    },
+    "ATTRIBUTE_3": {
+        "ATTRIBUTE_NAME": "Artist",
+        "ATTRIBUTE_TYPE": "string"
+    },
+
+    "ITEMS_PER_PAGE": 6
+    
+}

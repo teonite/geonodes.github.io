@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: geonodes
+  name: geonodes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: geonodes
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: geonodes
+    spec:
+      containers:
+        - name: geonodes
+          image: fstanczyk/geonodes.io:latest
+          imagePullPolicy: Always

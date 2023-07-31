@@ -8,6 +8,14 @@ export default defineConfig({
   server: {
     port: 3000,
     strictPort: true,
+    proxy: {
+      "/api": {
+           target: 'http://127.0.0.1:8001',
+           changeOrigin: true,
+           secure: false,      
+           ws: true,
+      }
+    }
   },
   css: {
     postcss: {
@@ -19,4 +27,5 @@ export default defineConfig({
       '@scssutils': path.resolve(__dirname, '/src/shared/scss/utils'),
     },
   },
+  define: {'process.env': process.env}
 });
