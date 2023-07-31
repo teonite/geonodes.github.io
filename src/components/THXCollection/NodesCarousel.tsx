@@ -4,25 +4,31 @@ import { CarouselIndicators } from '../../shared/components/layout/CarouselIndic
 import { useState } from 'react';
 import { useContract } from "@thirdweb-dev/react";
 import { abi } from "../../../contract-cache.json" 
-import { CONTRACT_ADDRESS } from "../../../nft-config.json"
+import { CONTRACT_ADDRESS, ITEMS_PER_PAGE } from "../../../nft-config.json"
 import './style.scss'
 import { JSX } from 'react/jsx-runtime';
 
 export const NodesCarousel = () => {
   const { contract } = useContract(CONTRACT_ADDRESS, abi);
 
-    const itemsPerPage = 6
     const [selected, setSelected] = useState(0);
     let pages: JSX.Element[] = [];
-    const pagesNumber = 3 /* to dynamically calculate the number of pages, it would be better to have a smart contract function totalSupply() */
+    
+    const itemsPerPage = ITEMS_PER_PAGE
+
+    /**
+     * after implementing new contract, pagesNumber should be dynamically calculated with totalSupply contract method.
+     * Current Geonode conctract does not support this call.
+     */
+    const pagesNumber = 3; 
     let currentPage = 0;
+
     while(true) {
       const startIndex = currentPage * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
       let crntId = 1
       const pageItems = Array.from({ length: itemsPerPage }, (_, index) => startIndex + index);
       const carouselPageItems = pageItems.map((index) => (
-        <ThxNodePanel key={index} nodeId={(currentPage*6) + crntId++} showInfo={true} playOnHover={true} contract={contract}/>
+        <ThxNodePanel key={index} nodeId={(currentPage*itemsPerPage) + crntId++} showInfo={true} playOnHover={true} contract={contract}/>
       ));
   
       pages.push(

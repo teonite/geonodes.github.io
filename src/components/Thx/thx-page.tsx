@@ -44,18 +44,6 @@ export const ThxPage = () => {
     
     const { contract } = useContract(CONTRACT_ADDRESS, abi);
     const address = useAddress();
-    // useEffect(() => {
-    //     fetch(`${server}${routes.mint}`, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({ address, hash }),
-    //     })
-    //       .then((res) => res.json())
-    //       .catch((error) => {console.error('Error fetching data:', error);});
-    //   }, [address, hash]);
-
 
     const submitHandler = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();

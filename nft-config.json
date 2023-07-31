@@ -16,5 +16,8 @@
     "ATTRIBUTE_3": {
         "ATTRIBUTE_NAME": "Artist",
         "ATTRIBUTE_TYPE": "string"
-    }
+    },
+
+    "ITEMS_PER_PAGE": 6
+    
 }
