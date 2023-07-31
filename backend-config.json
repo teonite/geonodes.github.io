@@ -2,6 +2,6 @@
     "server": "http://127.0.0.1:8001",
     "routes":{
         "link_validation": "/check_link",
-        "mint": "/mint"
+        "claim": "/claim"
     }
 }

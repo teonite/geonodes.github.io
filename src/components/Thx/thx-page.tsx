@@ -45,10 +45,12 @@ export const ThxPage = () => {
     const { contract } = useContract(CONTRACT_ADDRESS, abi);
     const address = useAddress();
 
+    const [claimInfo, setClaimInfo] = useState("")
+
     const submitHandler = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${server}${routes.mint}`, {
+            const response = await fetch(`${server}${routes.claim}`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -57,15 +59,13 @@ export const ThxPage = () => {
             });
         
             if (!response.ok) {
-              // If the response status is not in the 2xx range, it's considered an error
+              setClaimInfo('Error: Try again after a few seconds.')
               throw new Error('Request failed with status ' + response.status);
             }
-        
-            const data = await response.json();
-            // Do something with the response data, if needed
-            console.log(data);
+            setClaimInfo('Claim succeded!')
           } catch (error) {
             console.error('Error fetching data:', error);
+            setClaimInfo('Error: Try again after a few seconds.')
           }
     };
 
@@ -115,6 +115,8 @@ export const ThxPage = () => {
                                     <WalletInputArrow textColor={"#FFFF"}/>
                                 </div>
                             </div> 
+                            {claimInfo}
+
                         </div>
                         <p>If you're new to Web3, please visit our <Link to="/crashcourse">crash course</Link>.</p>
                         <p>
