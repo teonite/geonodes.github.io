@@ -118,7 +118,7 @@ export const ThxPage = () => {
                             {claimInfo}
 
                         </div>
-                        <p>If you're new to Web3, please visit our <Link to="/crashcourse">crash course</Link>.</p>
+                        <p>If you're new to Web3, please visit our <Link to="/crashcourse" state={{ from: `/thx/${hash}` }}>crash course</Link>.</p>
                         <p>
                             If you have any questions or need assistance, please contact 
                             Mike at <a href="<--mail link-->">mike@teonite.com </a>
