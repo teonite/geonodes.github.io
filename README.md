@@ -43,17 +43,23 @@ Deployment is done via github actions, checkout `.github` directory for further 
 
 ### nft-config.json
 
-`"NETWORK":` - what network is the contract deployed on (currently works only "ethereum"),
+`"NETWORK":` - what network is the contract deployed on (currently works only "ethereum")
+
 `"CONTRACT_ADDRESS"`: contract address (this address sepcifies only the contract from which the tokenURI's will be read)
 
 #### Metadata configuration
-`"NAME":` under whaich label, the metadata stores the name of the NFT, usually "name",
-`"IMAGE":` under whaich label, the metadata stores the image of the NFT, usually "image",
-`"ANIMATION":` under whaich label, the metadata stores the animation url of the NFT, usually "animation_url",
-`"ATTRRIBUTES":` under whaich label, the metadata stores the attributes of the NFT, usually "attributes",
+`"NAME":` under whaich label, the metadata stores the name of the NFT, usually "name"
 
-`"ATTRIBUTE_1/2/3":` The three attributes which values will be displayed on the info panel (under the nft media ex. collection page).
-`"ATTRIBUTE_NAME":` what is the name of the attribute ex. "Ambient",
+`"IMAGE":` under whaich label, the metadata stores the image of the NFT, usually "image"
+
+`"ANIMATION":` under whaich label, the metadata stores the animation url of the NFT, usually "animation_url"
+
+`"ATTRRIBUTES":` under whaich label, the metadata stores the attributes of the NFT, usually "attributes"
+
+`"ATTRIBUTE_1/2/3":` The three attributes which values will be displayed on the info panel (under the nft media ex. collection page)
+
+`"ATTRIBUTE_NAME":` what is the name of the attribute ex. "Ambient"
+
 `"ATTRIBUTE_TYPE":` what is the type of attribute ex. "string" or "number"
 
 `"ITEMS_PER_PAGE":` how many items should be displayed on one collection-page (recommended 6)
