@@ -20,6 +20,8 @@ spec:
         - name: geonodes
           image: fstanczyk/geonodes.io:latest
           imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
 
 ---
 
@@ -27,23 +29,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: geonodes-backend
-  name: geonodes-backend
+    app: geonodes-api
+  name: geonodes-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: geonodes-backend
+      app: geonodes-api
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         tier: backend
-        app: geonodes-backend
+        app: geonodes-api
     spec:
       containers:
-        - name: geonodes-backend
+        - name: geonodes-api
           image: fstanczyk/geonodes-web:latest
           env:
           - name: WSS_INFURA_MAINNET_API_KEY

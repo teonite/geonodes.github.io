@@ -8,7 +8,6 @@ import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNod
 import { Link, useParams } from "react-router-dom";
 import { abi } from "../../../contract-cache.json" 
 import { useContract } from "@thirdweb-dev/react";
-import { server, routes }   from "../../../backend-config.json"
 import { CONTRACT_ADDRESS } from "../../../nft-config.json"
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import './style.scss';
@@ -27,7 +26,7 @@ export const ThxPage = () => {
     let {hash} = params 
     const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
     useEffect(() => {
-        fetch(`${server}${routes.link_validation}`, {
+        fetch(`/check_link/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -50,7 +49,7 @@ export const ThxPage = () => {
     const submitHandler = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${server}${routes.claim}`, {
+            const response = await fetch(`/claim/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

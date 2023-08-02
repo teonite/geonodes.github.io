@@ -3,11 +3,9 @@ kind: Service
 metadata:
   name: geonodes
 spec:
-  type: NodePort
   ports:
-  - port: 80
-    name: http
-    targetPort: 80
+  - port: 8080
+    targetPort: 8080
     protocol: TCP
   selector:
     app: geonodes
@@ -17,7 +15,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: geonodes-backend
+  name: geonodes-api
 spec:
   type: ClusterIP
   ports:
@@ -25,5 +23,5 @@ spec:
     name: http
     protocol: TCP
   selector:
-    app: geonodes-backend
+    app: geonodes-api
     tier: backend
