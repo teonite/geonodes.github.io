@@ -5,4 +5,3 @@ resources:
   - namespace.yaml
   - deployments.yaml
   - services.yaml
-  # - secret.yaml
