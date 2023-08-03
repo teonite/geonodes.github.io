@@ -80,3 +80,10 @@ Deployment is done via github actions, checkout `.github` directory for further 
   "bytecode": ...
  }
  ```
+
+ ### Testing other pages
+
+ `THX-Page` To test thx-page (page that should be accessible only to the person with unique token) go to `/thx 089d7253cf14d08c43cbd361abc87a54a9525d7b8af38a781c6cb48bf28f9c61`
+
+ `Collection page` Currently the only way to access this page is to go to `/collection`. This page should be displayed after following shared link.
+ 

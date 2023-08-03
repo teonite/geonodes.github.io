@@ -43,12 +43,6 @@ export const App = () => {
   return (
     <div id="app">
       <Header shareButton={false}/>
-      
-      {/** these two buttons are aonly for debugging */}
-      <Link to="/thx/6e06da3d22222acb700a68cb656b616eac8de673a4fd3241e56a8b9ebb259c12"><button className="action-button" style={{margin: "0 0 2rem 12rem"}}>DEBUG: thx-page</button></Link>
-      <Link to="/collection"><button className="action-button" style={{margin: "0 0 2rem 3rem"}}>DEBUG: collection</button></Link>
-      {/* */}
-
       <section id="welcome">
         <div className="welcome-container">
           <div className="welcome-content">
