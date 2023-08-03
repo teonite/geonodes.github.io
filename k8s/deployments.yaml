@@ -3,21 +3,23 @@ kind: Deployment
 metadata:
   labels:
     app: geonodes
-  name: geonodes
+  name: web
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: geonodes
+      type: web
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: geonodes
+        type: web
     spec:
       containers:
-        - name: geonodes
+        - name: web
           image: fstanczyk/geonodes.io:latest
           imagePullPolicy: Always
           ports:
@@ -29,37 +31,57 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: geonodes-api
-  name: geonodes-api
+    app: geonodes
+  name: api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: geonodes-api
+      app: geonodes
+      type: api
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         tier: backend
-        app: geonodes-api
+        app: geonodes
+        type: api
     spec:
       containers:
-        - name: geonodes-api
+        - name: api
           image: fstanczyk/geonodes-web:latest
           env:
-          - name: WSS_INFURA_MAINNET_API_KEY
-            value: "wss://mainnet.infura.io/ws/v3/7360ab096e3742f38b003a2d6d17d79e"
-          - name: WSS_INFURA_GOERLI_API_KEY
-            value: "wss://goerli.infura.io/ws/v3/7360ab096e3742f38b003a2d6d17d79e"
-          - name: WSS_MAINNET_PRIVATE_KEY
-            value: "fc4d7c7746c5b9be50db80d0400fb2c0468ec46be98ad3bc5eab9b0198996d63"
-          - name: WSS_MAINNET_PUBLIC_KEY
-            value: "0xF1a13421214A6A8399fbB6CAcC8e3eEF4E3a7FDa"
-          - name: WSS_GOERLI_PRIVATE_KEY
-            value: "fc4d7c7746c5b9be50db80d0400fb2c0468ec46be98ad3bc5eab9b0198996d63"
-          - name: WSS_GOERLI_PUBLIC_KEY
-            value: "0xF1a13421214A6A8399fbB6CAcC8e3eEF4E3a7FDa"
+            - name: WSS_INFURA_MAINNET_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: WSS_INFURA_MAINNET_API_KEY
+            - name: WSS_INFURA_GOERLI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: WSS_INFURA_GOERLI_API_KEY
+            - name: WSS_MAINNET_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: WSS_MAINNET_PRIVATE_KEY
+            - name: WSS_MAINNET_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: WSS_MAINNET_PUBLIC_KEY
+            - name: WSS_GOERLI_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: WSS_GOERLI_PRIVATE_KEY
+            - name: WSS_GOERLI_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: WSS_GOERLI_PUBLIC_KEY
           imagePullPolicy: Always
           ports:
             - name: http

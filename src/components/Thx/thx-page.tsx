@@ -26,7 +26,7 @@ export const ThxPage = () => {
     let {hash} = params 
     const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
     useEffect(() => {
-        fetch(`/check_link/`, {
+        fetch(`/api/check_link/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const ThxPage = () => {
     const submitHandler = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
         try {
-            const response = await fetch(`/claim/`, {
+            const response = await fetch(`/api/claim/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
