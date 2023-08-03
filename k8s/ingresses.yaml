@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: geonodes
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: geonodes.teonite.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: geonodes
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
