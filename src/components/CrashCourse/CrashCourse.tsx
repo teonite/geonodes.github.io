@@ -3,11 +3,13 @@ import { Footer } from '../../shared/components/layout/Footer/Footer';
 import {MouseEventHandler} from 'react';
 import {BackArrow} from '../../components/icons/BackArrow'
 import { ShareModal } from '../../shared/components/layout/SharedModal/ShareModal'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import './style.scss';
 
 export const CrashCourse = () => {
+    const location = useLocation()
+    const { from } = location.state
     const closeModal: MouseEventHandler<HTMLDivElement> = (event) => {
         const modal = document.querySelector('.share-modal');
         if (!modal) return;
@@ -66,7 +68,7 @@ export const CrashCourse = () => {
                     </div>
                 </div>
                 <div className="back-button-container">
-                    <Link to='/hash'><button className="back-button"> <BackArrow /> back to NFT</button></Link>
+                    <Link to={`${from}`}><button className="back-button"> <BackArrow /> back to NFT</button></Link>
                 </div>
             </section>
             <div className="share-modal hidden" onClick={closeModal}>

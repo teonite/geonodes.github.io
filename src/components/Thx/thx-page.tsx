@@ -8,7 +8,6 @@ import { ThxNodePanel } from '../../shared/components/layout/ThxNodePanel/ThxNod
 import { Link, useParams } from "react-router-dom";
 import { abi } from "../../../contract-cache.json" 
 import { useContract } from "@thirdweb-dev/react";
-import { server, routes }   from "../../../backend-config.json"
 import { CONTRACT_ADDRESS } from "../../../nft-config.json"
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import './style.scss';
@@ -27,7 +26,7 @@ export const ThxPage = () => {
     let {hash} = params 
     const [validatedInfo, setValidatedInfo] = useState<boolean | ClientPageInfo>()
     useEffect(() => {
-        fetch(`${server}${routes.link_validation}`, {
+        fetch(`/check_link/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -45,10 +44,12 @@ export const ThxPage = () => {
     const { contract } = useContract(CONTRACT_ADDRESS, abi);
     const address = useAddress();
 
+    const [claimInfo, setClaimInfo] = useState("")
+
     const submitHandler = async (event: React.MouseEvent<HTMLDivElement>) => {
         event.preventDefault();
         try {
-            const response = await fetch(`${server}${routes.mint}`, {
+            const response = await fetch(`/claim/`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -57,15 +58,13 @@ export const ThxPage = () => {
             });
         
             if (!response.ok) {
-              // If the response status is not in the 2xx range, it's considered an error
+              setClaimInfo('Error: Try again after a few seconds.')
               throw new Error('Request failed with status ' + response.status);
             }
-        
-            const data = await response.json();
-            // Do something with the response data, if needed
-            console.log(data);
+            setClaimInfo('Claim succeded!')
           } catch (error) {
             console.error('Error fetching data:', error);
+            setClaimInfo('Error: Try again after a few seconds.')
           }
     };
 
@@ -115,8 +114,10 @@ export const ThxPage = () => {
                                     <WalletInputArrow textColor={"#FFFF"}/>
                                 </div>
                             </div> 
+                            {claimInfo}
+
                         </div>
-                        <p>If you're new to Web3, please visit our <Link to="/crashcourse">crash course</Link>.</p>
+                        <p>If you're new to Web3, please visit our <Link to="/crashcourse" state={{ from: `/thx/${hash}` }}>crash course</Link>.</p>
                         <p>
                             If you have any questions or need assistance, please contact 
                             Mike at <a href="<--mail link-->">mike@teonite.com </a>
